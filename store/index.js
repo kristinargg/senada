@@ -41,7 +41,7 @@ export const actions = {
         config
       )
       .then((res) => {
-        console.log('response', res.data.data)
+        // console.log('response', res.data.data)
         store.commit('setListLoker', res.data.data)
       })
   },
@@ -52,7 +52,7 @@ export const actions = {
         config
       )
       .then((res) => {
-        console.log('response', res.data.links)
+        // console.log('response', res.data.links)
         store.commit('setPaginationLoker', res.data.links)
       })
   },
