@@ -63,13 +63,13 @@ export const actions = {
         config
       )
       .then((res) => {
-        console.log('response', res.data.data)
+        // console.log('response', res.data.data)
         store.commit('setListJobfair', res.data.data)
       })
-      .catch(() => {
-        console.error()
-        // store.commit("InfoError", this.setInfoError);
-      })
+    // .catch(() => {
+    //   // console.error()
+    //   store.commit("InfoError", this.setInfoError);
+    // })
   },
   // fetchPelatihan(store) {
   //   axios
