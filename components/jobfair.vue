@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 lg:px-[120px] font-sen py-10">
+  <div class="px-4 lg:px-[120px] font-poppins py-10">
     <form class="w-full">
       <div class="relative w-full">
         <div

@@ -27,11 +27,13 @@
         "
       >
         <div class="flex items-center py-2">
-          <img
-            src="@/assets/img/logo-putih.png"
-            alt="logo senada"
-            class="w-10"
-          />
+          <nuxt-link to="/">
+            <img
+              src="@/assets/img/logo-putih.png"
+              alt="logo senada"
+              class="w-10"
+            />
+          </nuxt-link>
         </div>
         <button class="md:hidden flex items-center">
           <svg
@@ -85,17 +87,19 @@
               rounded-lg
             "
           >
-            <a
-              href="#"
-              class="
-                py-2
-                w-full
-                rounded-lg
-                text-white text-sm
-                md:text-base md:px-4
-              "
-              >Pelatihan</a
-            >
+            <nuxt-link to="/pelatihan">
+              <a
+                href="#"
+                class="
+                  py-2
+                  w-full
+                  rounded-lg
+                  text-white text-sm
+                  md:text-base md:px-4
+                "
+                >Pelatihan</a
+              >
+            </nuxt-link>
           </li>
           <li
             class="
@@ -150,17 +154,19 @@
               rounded-lg
             "
           >
-            <a
-              href="#"
-              class="
-                py-2
-                w-full
-                rounded-lg
-                text-white text-sm
-                md:text-base md:px-4
-              "
-              >Perusahaan</a
-            >
+            <nuxt-link to="/perusahaan">
+              <a
+                href="#"
+                class="
+                  py-2
+                  w-full
+                  rounded-lg
+                  text-white text-sm
+                  md:text-base md:px-4
+                "
+                >Perusahaan</a
+              >
+            </nuxt-link>
           </li>
         </ul>
       </nav>
