@@ -105,13 +105,8 @@ export const actions = {
   fetchPerusahaan(store) {
     axios
       .get(
-        `https://data.kemnaker.go.id/api/v1/services/eab3bd70-44b0-42ba-baaf-3dc3cdc86cf8?prov_code=${this.state.prov_code}`,
-        {
-          config,
-          params: {
-            limit: 5,
-          },
-        }
+        `https://data.kemnaker.go.id/api/v1/services/eab3bd70-44b0-42ba-baaf-3dc3cdc86cf8?prov_code=${this.state.prov_code}&limit=5`,
+        config
       )
       .then((response) => {
         console.log('response', response.data)
@@ -122,23 +117,23 @@ export const actions = {
         // store.commit("InfoError", this.setInfoError);
       })
   },
-  fetchMore(store) {
-    axios
-      .get(
-        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&limit=5&offet=0`,
-        config
-      )
-      .then((response) => {
-        store.commit('setPerusahaan', [
-          ...store.state.perusahaan,
-          ...response.data.data,
-        ])
-      })
-    // .catch(() => {
-    //   // console.error()
-    //   store.commit(this.state.setInfoError)
-    // })
-  },
+  // fetchMore(store) {
+  //   axios
+  //     .get(
+  //       `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&limit=5&offet=0`,
+  //       config
+  //     )
+  //     .then((response) => {
+  //       store.commit('setPerusahaan', [
+  //         ...store.state.perusahaan,
+  //         ...response.data.data,
+  //       ])
+  //     })
+  //   // .catch(() => {
+  //   //   // console.error()
+  //   //   store.commit(this.state.setInfoError)
+  //   // })
+  // },
   fetchPelatihan(store) {
     axios
       .get(

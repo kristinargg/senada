@@ -143,7 +143,6 @@
         <!-- <Pagination /> -->
         <button
           class="py-2 px-6 bg-secondary rounded-full text-white font-bold"
-          @click="fetchMore()"
         >
           More
         </button>
@@ -167,9 +166,9 @@ export default {
     fetchPerusahaan() {
       this.$store.dispatch('fetchPerusahaan')
     },
-    fetchMore() {
-      this.$store.dispatch('fetchMore')
-    },
+    // fetchMore() {
+    //   this.$store.dispatch('fetchMore')
+    // },
   },
 }
 </script>
