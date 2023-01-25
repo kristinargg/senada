@@ -65,8 +65,7 @@
             "
           >
             <nuxt-link to="/">
-              <a
-                href="#"
+              <span
                 class="
                   py-2
                   w-full
@@ -74,7 +73,7 @@
                   text-white text-sm
                   md:text-base md:px-4
                 "
-                >Beranda</a
+                >Beranda</span
               >
             </nuxt-link>
           </li>
@@ -88,8 +87,7 @@
             "
           >
             <nuxt-link to="/pelatihan">
-              <a
-                href="#"
+              <span
                 class="
                   py-2
                   w-full
@@ -97,7 +95,7 @@
                   text-white text-sm
                   md:text-base md:px-4
                 "
-                >Pelatihan</a
+                >Pelatihan</span
               >
             </nuxt-link>
           </li>
@@ -155,7 +153,7 @@
             "
           >
             <nuxt-link to="/perusahaan">
-              <a
+              <span
                 href="#"
                 class="
                   py-2
@@ -164,7 +162,7 @@
                   text-white text-sm
                   md:text-base md:px-4
                 "
-                >Perusahaan</a
+                >Perusahaan</span
               >
             </nuxt-link>
           </li>

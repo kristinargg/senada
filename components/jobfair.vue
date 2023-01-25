@@ -122,7 +122,8 @@
               <li>End : {{ job.finish_date }}</li>
             </ul>
             <a
-              href=""
+              :href="job.link"
+              target="_blank"
               class="
                 py-2
                 px-4

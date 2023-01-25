@@ -1,8 +1,8 @@
 <template>
   <div class="px-4 lg:px-[150px] py-10 font-poppins">
-    <div class="border rounded py-10 px-6 shadow-md">
-      <h1 class="font-bold text-center py-3">
-        Lorem ipsum dolor sit amet consectetur.
+    <div class="border rounded p-10 shadow-md">
+      <h1 class="text-md md:text-lg font-bold text-center py-3">
+        Temukan Lowongan Kerja yang kamu impikan!
       </h1>
       <div class="flex space-x-2 items-center w-full">
         <form class="w-full">
@@ -55,28 +55,6 @@
           </div>
         </form>
 
-        <!-- <div class="relative w-full">
-          <input
-            type="text"
-            class="py-2 px-2 md:py-2 md:px-4 w-full bg-slate-300 rounded-lg"
-          />
-          <div class="absolute left-0 flex items-center pl-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6 absolute"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
-          </div>
-        </div> -->
         <div class="py-2 px-2 md:py-2 md:px-4 bg-info rounded-lg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +75,7 @@
     </div>
     <div class="pt-10">
       <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
-        <div v-for="kerja in loker" :key="kerja.id" class="py-2">
+        <div v-for="kerja in loker.data" :key="kerja.id" class="py-2">
           <div class="bg-white rounded-md py-2 px-2 md:p-4">
             <div
               class="
@@ -204,119 +182,13 @@
           </div>
         </div>
         <div class="flex justify-center">
-          <div>
-            <nav
-              class="isolate inline-flex -space-x-px rounded-md shadow-sm"
-              aria-label="Pagination"
-            >
-              <a
-                class="
-                  relative
-                  inline-flex
-                  items-center
-                  rounded-l-md
-                  border border-gray-300
-                  bg-white
-                  px-2
-                  py-2
-                  text-sm
-                  font-medium
-                  text-gray-500
-                  hover:bg-gray-50
-                  focus:z-20
-                "
-              >
-                <span class="sr-only">Previous</span>
-                <!-- Heroicon name: mini/chevron-left -->
-                <svg
-                  class="h-5 w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
-              <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-              <!-- <a
-              href="#"
-              aria-current="page"
-              class="
-                relative
-                z-10
-                inline-flex
-                items-center
-                border border-indigo-500
-                bg-indigo-50
-                px-4
-                py-2
-                text-sm
-                font-medium
-                text-indigo-600
-                focus:z-20
-              "
-              >1</a
-            > -->
-              <a
-                :href="paginations.prev"
-                class="
-                  relative
-                  inline-flex
-                  items-center
-                  border border-gray-300
-                  bg-white
-                  px-4
-                  py-2
-                  text-sm
-                  font-medium
-                  text-gray-500
-                  hover:bg-gray-50
-                  focus:z-20
-                "
-                >2</a
-              >
-              <!-- <as -->
-              <a
-                :href="paginations.next"
-                class="
-                  relative
-                  inline-flex
-                  items-center
-                  rounded-r-md
-                  border border-gray-300
-                  bg-white
-                  px-2
-                  py-2
-                  text-sm
-                  font-medium
-                  text-gray-500
-                  hover:bg-gray-50
-                  focus:z-20
-                "
-              >
-                <span class="sr-only">Next</span>
-                <!-- Heroicon name: mini/chevron-right -->
-                <svg
-                  class="h-5 w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
-            </nav>
-          </div>
+          <!-- <Pagination /> -->
+          <button
+            class="py-2 px-6 bg-secondary rounded-full text-white font-bold"
+            @click="fetchMoreLoker()"
+          >
+            More
+          </button>
         </div>
       </div>
     </div>
@@ -324,26 +196,32 @@
 </template>
 
 <script>
+// import Pagination from './pagination.vue'
 export default {
   name: 'LokerComp',
+  // components: {
+  //   Pagination,
+  // },
+  data() {
+    return {
+      page: 1,
+    }
+  },
+
   computed: {
     loker() {
       return this.$store.state.loker
     },
-    paginations() {
-      return this.$store.state.paginations
-    },
   },
   mounted() {
     this.fetchLoker()
-    this.fetchLokerPagination()
   },
   methods: {
     fetchLoker() {
       this.$store.dispatch('fetchLoker')
     },
-    fetchLokerPagination() {
-      this.$store.dispatch('fetchLokerPagination')
+    fetchMoreLoker() {
+      this.$store.dispatch('fetchMoreLoker')
     },
   },
 }

@@ -1,6 +1,13 @@
 <template>
   <div id="home" class="font-poppins py-20">
-    <div class="px-4 py-10 md:flex md:flex-shrink-0 md:px-[70px] lg:px-[150px]">
+    <div
+      class="
+        px-4
+        py-10
+        md:py-0 md:flex md:flex-shrink-0 md:px-[70px]
+        lg:px-[150px]
+      "
+    >
       <div
         class="
           md:flex md:justify-center
@@ -8,7 +15,7 @@
           bg-blue-200
           px-6
           py-16
-          lg:px-16
+          lg:px-10
           rounded-2xl
         "
       >
@@ -25,12 +32,11 @@
               class="
                 text-base
                 md:text-md
-                lg:text-lg
+                lg:text-xl
                 first-letter:text-3xl first-letter:font-bold
               "
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At quidem
-              nobis quibusdam molestiae. Enim, delectus.
+              If you can't handle stress, you can't handle success.
             </p>
             <span class="float-right text-lg mt-2">~Unknown</span>
           </div>
@@ -42,26 +48,28 @@
         <div>
           <h1 class="text-2xl font-bold">Lowongan Kerja</h1>
           <div class="flex justify-end py-10">
-            <button
-              class="
-                py-2
-                px-4
-                border border-black
-                rounded-full
-                hover:bg-secondary
-                hover:text-white
-                hover:transition-all
-                hover:ease-in-out
-                duration-500
-                hover:shadow-md hover:border-none
-              "
-            >
-              See all
-            </button>
+            <nuxt-link to="/lowongan-kerja">
+              <button
+                class="
+                  py-2
+                  px-4
+                  border border-black
+                  rounded-full
+                  hover:bg-secondary
+                  hover:text-white
+                  hover:transition-all
+                  hover:ease-in-out
+                  duration-500
+                  hover:shadow-md hover:border-none
+                "
+              >
+                See all
+              </button>
+            </nuxt-link>
           </div>
         </div>
         <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
-          <div v-for="kerja in loker" :key="kerja.id" class="py-2">
+          <div v-for="kerja in loker.data" :key="kerja.id" class="py-2">
             <div class="bg-white rounded-md py-2 px-2 md:p-4">
               <div
                 class="
