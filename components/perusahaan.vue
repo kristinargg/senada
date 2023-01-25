@@ -2,7 +2,7 @@
   <div id="perusahaan" class="px-4 lg:px-[120px] font-poppins py-10">
     <div class="px-4 py-10 border">
       <h1 class="text-md md:text-lg font-bold text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Perusahaan yang membuka lowongan kerja
       </h1>
       <form class="w-full py-5">
         <div class="relative w-full">
@@ -68,7 +68,12 @@
       "
     >
       <div v-for="company in perusahaan" :key="company.id">
-        <div class="bg-white rounded-md p-4">
+        <div v-if="company.length === 0" class="flex items-center">
+          <p class="text-center text-xl text-white">
+            Data perusahaan pemberi kerja belum tersedia
+          </p>
+        </div>
+        <div v-else class="bg-white rounded-md p-4">
           <div class="flex justify-center">
             <img
               :src="company.logo"
@@ -110,6 +115,9 @@
                     d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
                   />
                 </svg>
+                <p v-if="company.phone === null" class="pl-2 text-[10px]">
+                  Nomor telepon belum tersedia
+                </p>
                 <p class="pl-2">{{ company.phone }}</p>
               </div>
             </div>
@@ -129,8 +137,8 @@
                 rounded
               "
             >
-              <p v-if="company.address === ''">
-                Alamat tidak tersedia untuk saat ini
+              <p v-if="company.address === null">
+                Alamat belum tersedia untuk saat ini
               </p>
               <p v-else>
                 {{ company.address }}

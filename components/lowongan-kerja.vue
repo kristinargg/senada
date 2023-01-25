@@ -76,7 +76,10 @@
     <div class="pt-10">
       <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
         <div v-for="kerja in loker.data" :key="kerja.id" class="py-2">
-          <div class="bg-white rounded-md py-2 px-2 md:p-4">
+          <div v-if="kerja.length === 0" class="flex items-center">
+            <p class="text-center">Data belum tersedia</p>
+          </div>
+          <div v-else class="bg-white rounded-md py-2 px-2 md:p-4">
             <div
               class="
                 flex
