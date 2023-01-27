@@ -22,5 +22,14 @@ module.exports = {
       },
     },
   },
+  variants: {
+    extend: {
+      backgroundColor: ['active'],
+      outlineColor: ['active'],
+      outlineOffset: ['active'],
+      outlineWidth: ['active'],
+      textColor: ['active'],
+    },
+  },
   plugins: [],
 }

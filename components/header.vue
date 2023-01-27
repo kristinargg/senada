@@ -62,9 +62,14 @@
               px-4
               hover:outline-1 hover:outline-white
               rounded-lg
+              active:outline
+              active:outline-1
+              active:outline-white
+              active:bg-white
+              active:text-black
             "
           >
-            <nuxt-link to="/">
+            <nuxt-link to="/" aria-current="page">
               <span
                 class="
                   py-2
@@ -84,6 +89,7 @@
               px-4
               hover:outline-1 hover:outline-white
               rounded-lg
+              active:outline active:outline-1 active:outline-white
             "
           >
             <nuxt-link to="/pelatihan">
@@ -106,6 +112,7 @@
               px-4
               hover:outline-1 hover:outline-white
               rounded-lg
+              active:outline active:outline-1 active:outline-white
             "
           >
             <nuxt-link to="/lowongan-kerja">
@@ -128,6 +135,7 @@
               px-4
               hover:outline-1 hover:outline-white
               rounded-lg
+              active:outline active:outline-1 active:outline-white
             "
           >
             <nuxt-link to="/jobfair">
@@ -150,6 +158,7 @@
               px-4
               hover:outline-1 hover:outline-white
               rounded-lg
+              active:outline active:outline-1 active:outline-white
             "
           >
             <nuxt-link to="/perusahaan">

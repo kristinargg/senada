@@ -108,6 +108,7 @@
               rounded
               hover:text-white
             "
+            target="_blank"
             >Detail Pelatihan |➡️</a
           >
         </div>
