@@ -22,13 +22,18 @@ export default {
         href: 'https://fonts.googleapis.com/css2?family=Poppins',
       },
     ],
+    script: [
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/main.css'],
+  css: ['@/assets/css/input.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/axioshead.js', mode: 'client' }],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -46,15 +51,16 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/tailwindcss',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
-    // proxy: true,
+    // proxy: 'https://data.kemnaker.go.id/api/v1/services/',
     proxyHeaders: false,
-    credentials: false,
+    credentials: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

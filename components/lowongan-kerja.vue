@@ -1,6 +1,6 @@
 <template>
   <div class="px-4 lg:px-[150px] py-10 font-poppins">
-    <div class="border rounded p-10 shadow-md">
+    <div class="border rounded p-4 md:p-10 shadow-md">
       <h1 class="text-md md:text-lg font-bold text-center py-3">
         Temukan Lowongan Kerja yang kamu impikan!
       </h1>
@@ -36,6 +36,7 @@
             </div>
             <input
               id="default-search"
+              v-model="search"
               type="search"
               class="
                 block
@@ -70,12 +71,17 @@
               d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
             />
           </svg>
+          <!-- <div>
+            <form action="" method="get">
+
+            </form>
+          </div> -->
         </div>
       </div>
     </div>
     <div class="pt-10">
       <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
-        <div v-for="kerja in loker.data" :key="kerja.id" class="py-2">
+        <div v-for="kerja in loker" :key="kerja.id" class="py-2">
           <div v-if="kerja.length === 0" class="flex items-center">
             <p class="text-center">Data belum tersedia</p>
           </div>
@@ -103,6 +109,8 @@
                   stroke-width="1.5"
                   stroke="currentColor"
                   class="w-4 h-4"
+                  :class="mark == true ? 'bg-red-500' : 'bg-none'"
+                  @click="handleClick()"
                 >
                   <path
                     stroke-linecap="round"
@@ -186,8 +194,103 @@
         </div>
         <div class="flex justify-center">
           <!-- <Pagination /> -->
+          <!-- <div class="isolate inline-flex -space-x-px rounded-md shadow-sm">
+            <a
+              class="
+                relative
+                inline-flex
+                items-center
+                rounded-l-md
+                border border-gray-300
+                bg-white
+                px-2
+                py-2
+                text-sm
+                font-medium
+                text-gray-500
+                hover:bg-gray-50
+                focus:z-20
+              "
+            >
+              <span class="sr-only">Previous</span>
+              <svg
+                class="h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+            <a
+              v-for="(i, index) in loker.meta.pagination.last_page"
+              :key="index"
+              class="
+                relative
+                inline-flex
+                items-center
+                border border-gray-300
+                bg-white
+                px-4
+                py-2
+                text-sm
+                font-medium
+                text-gray-500
+                hover:bg-gray-50
+                focus:z-20
+              "
+              >{{ i }}</a
+            >
+            <a
+              class="
+                relative
+                inline-flex
+                items-center
+                rounded-r-md
+                border border-gray-300
+                bg-white
+                px-2
+                py-2
+                text-sm
+                font-medium
+                text-gray-500
+                hover:bg-gray-50
+                focus:z-20
+              "
+              @click="next()"
+            >
+              <span class="sr-only">Next</span>
+              <svg
+                class="h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div> -->
           <button
-            class="py-2 px-6 bg-secondary rounded-full text-white font-bold"
+            :disabled="loker.length === 22"
+            class="
+              py-2
+              px-6
+              bg-secondary
+              rounded-full
+              text-white
+              font-bold
+              disabled:bg-slate-400
+            "
             @click="fetchMoreLoker()"
           >
             More
@@ -199,7 +302,6 @@
 </template>
 
 <script>
-// import Pagination from './pagination.vue'
 export default {
   name: 'LokerComp',
   // components: {
@@ -208,6 +310,8 @@ export default {
   data() {
     return {
       page: 1,
+      mark: false,
+      search: '',
     }
   },
 
@@ -225,6 +329,19 @@ export default {
     },
     fetchMoreLoker() {
       this.$store.dispatch('fetchMoreLoker')
+    },
+    handleClick() {
+      this.mark = true
+      this.index = 1
+    },
+    filterData() {
+      if (this.search) {
+        return this.loker.filter((job) =>
+          job.job_name.toLowerCase().toUpperCase().includes(this.search)
+        )
+      } else {
+        return this.wisata
+      }
     },
   },
 }

@@ -35,7 +35,25 @@
             />
           </nuxt-link>
         </div>
-        <button class="md:hidden flex items-center">
+        <div class="md:hidden flex items-center">
+          <nuxt-link to="/wishlist" class="text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9"
+              />
+            </svg>
+          </nuxt-link>
+        </div>
+        <!-- <button class="md:hidden flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -50,7 +68,7 @@
               d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
             />
           </svg>
-        </button>
+        </button> -->
       </div>
 
       <nav id="nav-menu" class="pt-3 md:pt-0">
@@ -177,14 +195,32 @@
           </li>
         </ul>
       </nav>
+      <div class="hidden md:block">
+        <nuxt-link to="/wishlist" class="text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9"
+            />
+          </svg>
+        </nuxt-link>
+      </div>
       <div class="px-4 block md:flex md:flex-shrink-0 md:space-x-2">
-        <div class="my-1 md:my-0">
+        <div class="my-1 md:my-0 flex items-center">
           <button
             class="
               py-2
               px-4
               w-full
-              md:pr-2
+              bg-secondary
               text-white text-sm
               md:text-base
               hover:shadow-xl hover:outline hover:outline-1 hover:outline-white
@@ -197,6 +233,7 @@
         <div>
           <button
             class="
+              hidden
               py-2
               px-4
               bg-secondary

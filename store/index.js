@@ -11,12 +11,16 @@ const config = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
   },
+  params: {
+    limit: 5,
+  },
 }
 // axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
 export const state = () => ({
   token: 'c9f531964260906544cd14c31accadcb2b66ec5dc68da9c576674f3990d6acad',
   prov_code: '224c2de4-72b5-4e58-9f20-5f869d68ddab', // 224c2de4-72b5-4e58-9f20-5f869d68ddab 5f72ce17-18b4-4742-862e-9dd92e8ade23
   loker: [],
+  lokers: [],
   jobfair: [],
   perusahaan: [],
   paginations: [],
@@ -28,15 +32,14 @@ export const state = () => ({
 export const mutations = {
   setListLoker(state, payload) {
     state.loker = payload
+    ++state.page
   },
   setListJobfair(state, payload) {
     state.jobfair = payload
   },
-  setPaginationLoker(state, payload) {
-    state.paginations = payload
-  },
   setPerusahaan(state, payload) {
     state.perusahaan = payload
+    ++state.page
   },
   setPelatihan(state, payload) {
     state.pelatihans = payload
@@ -44,18 +47,22 @@ export const mutations = {
   setError(state, payload) {
     state.error = payload
   },
+  setLokers(state, payload) {
+    state.lokes = payload
+  },
 }
 
 export const actions = {
   fetchLoker(store) {
     axios
       .get(
-        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&limit=5&offset=0`,
+        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&page=` +
+          this.state.page,
         config
       )
       .then((res) => {
-        console.log('response', res.data)
-        store.commit('setListLoker', res.data)
+        console.log('res', res.data.data)
+        store.commit('setListLoker', res.data.data)
       })
     // .catch(() => {
     //   // console.error()
@@ -65,26 +72,15 @@ export const actions = {
   fetchMoreLoker(store) {
     axios
       .get(
-        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&limit=5&offset=0`,
+        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&page=${this.state.page}`,
         config
       )
       .then((res) => {
         store.commit('setListLoker', [...store.state.loker, ...res.data.data])
       })
-    // .catch(() => {
-    //   // console.error()
-    //   store.commit(this.state.setInfoError)
-    // })
-  },
-  fetchLokerPagination(store) {
-    axios
-      .get(
-        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&limit=5&offset=20`,
-        config
-      )
-      .then((res) => {
-        // console.log('response', res.data.links)
-        store.commit('setPaginationLoker', [...store.state.loker, ...res.data])
+      .catch((error) => {
+        // console.error()
+        store.commit('setError', error)
       })
   },
   fetchJobfair(store) {
@@ -105,7 +101,7 @@ export const actions = {
   fetchPerusahaan(store) {
     axios
       .get(
-        `https://data.kemnaker.go.id/api/v1/services/eab3bd70-44b0-42ba-baaf-3dc3cdc86cf8?prov_code=${this.state.prov_code}&limit=5`,
+        `https://data.kemnaker.go.id/api/v1/services/eab3bd70-44b0-42ba-baaf-3dc3cdc86cf8?prov_code=${this.state.prov_code}&page=${this.state.page}`,
         config
       )
       .then((response) => {
@@ -117,23 +113,23 @@ export const actions = {
         // store.commit("InfoError", this.setInfoError);
       })
   },
-  // fetchMore(store) {
-  //   axios
-  //     .get(
-  //       `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&limit=5&offet=0`,
-  //       config
-  //     )
-  //     .then((response) => {
-  //       store.commit('setPerusahaan', [
-  //         ...store.state.perusahaan,
-  //         ...response.data.data,
-  //       ])
-  //     })
-  //   // .catch(() => {
-  //   //   // console.error()
-  //   //   store.commit(this.state.setInfoError)
-  //   // })
-  // },
+  fetchMore(store) {
+    axios
+      .get(
+        `https://data.kemnaker.go.id/api/v1/services/eab3bd70-44b0-42ba-baaf-3dc3cdc86cf8?prov_code=${this.state.prov_code}&page=${this.state.page}`,
+        config
+      )
+      .then((response) => {
+        store.commit('setPerusahaan', [
+          ...store.state.perusahaan,
+          ...response.data.data,
+        ])
+      })
+    // .catch(() => {
+    //   // console.error()
+    //   store.commit(this.state.setInfoError)
+    // })
+  },
   fetchPelatihan(store) {
     axios
       .get(

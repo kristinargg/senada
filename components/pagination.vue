@@ -69,7 +69,7 @@
           hover:bg-gray-50
           focus:z-20
         "
-        @click="fetchLokerPagination()"
+        @click="next()"
       >
         <span class="sr-only">Next</span>
         <svg
@@ -112,9 +112,21 @@ export default {
     fetchLoker() {
       this.$store.dispatch('fetchLoker')
     },
+    next() {
+      this.page++
+    },
     // fetchPage() {
     //   axios.get(
-    //     `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.$store.state.prov_code}&limit=5&offset=0&page=${this.page +1 }`
+    //     `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${
+    //       this.$store.state.prov_code
+    //     }&limit=5&offset=0&page=${this.page++}`,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer c9f531964260906544cd14c31accadcb2b66ec5dc68da9c576674f3990d6acad`,
+    //         'Access-Control-Allow-Origin': '*',
+    //         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    //       },
+    //     }
     //   )
     // },
   },

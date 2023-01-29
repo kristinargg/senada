@@ -6,6 +6,8 @@ module.exports = {
     './pages/**/*.vue',
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
+    './node_modules/flowbite.{js,ts}',
+    './node_modules/flowbite/**/*.js',
   ],
   theme: {
     extend: {
@@ -22,14 +24,5 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      backgroundColor: ['active'],
-      outlineColor: ['active'],
-      outlineOffset: ['active'],
-      outlineWidth: ['active'],
-      textColor: ['active'],
-    },
-  },
-  plugins: [],
+  plugins: [require('flowbite'), require('flowbite/plugin')],
 }
