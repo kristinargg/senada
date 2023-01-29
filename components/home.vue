@@ -43,10 +43,10 @@
         </div>
       </div> -->
     </div>
-    <div class="px-4 py-10 md:py-0 md:px-[70px] lg:px-[150px]">
-      <div id="indicators-carousel" class="relative" data-carousel="static">
+    <div class="px-4">
+      <div id="indicators-carousel" class="relative" data-carousel="slide">
         <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <div class="relative overflow-hidden rounded-lg h-96">
           <!-- Item 1 -->
           <div
             class="
@@ -67,11 +67,11 @@
               <img
                 src="@/assets/img/withoutbg.png"
                 alt="header-img"
-                class="md:w-3/4 lg:w-full"
+                class="md:w-3/4"
               />
             </div>
             <div class="md:flex md:items-center">
-              <div class="">
+              <div>
                 <p
                   class="
                     text-base
