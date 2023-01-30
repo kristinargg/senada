@@ -9,6 +9,11 @@
 <script>
 export default {
   name: 'WishlistPage',
+  head() {
+    return {
+      title: 'Wish List',
+    }
+  },
 }
 </script>
 

@@ -9,5 +9,10 @@
 <script>
 export default {
   name: 'PelatihanPage',
+  head() {
+    return {
+      title: 'Pelatihan',
+    }
+  },
 }
 </script>

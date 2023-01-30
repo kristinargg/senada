@@ -16,5 +16,10 @@ export default {
     Header,
     FooterVue,
   },
+  head() {
+    return {
+      title: 'Beranda',
+    }
+  },
 }
 </script>

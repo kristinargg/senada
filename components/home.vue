@@ -48,109 +48,242 @@
         <!-- Carousel wrapper -->
         <div class="relative overflow-hidden rounded-lg h-96">
           <!-- Item 1 -->
-          <div
-            class="
-              hidden
-              duration-700
-              ease-in-out
-              md:flex md:justify-center
-              lg:mx-[150px]
-              bg-blue-200
-              px-6
-              py-16
-              lg:px-10
-              rounded-2xl
-            "
-            data-carousel-item
-          >
-            <div>
-              <img
-                src="@/assets/img/withoutbg.png"
-                alt="header-img"
-                class="md:w-3/4"
-              />
-            </div>
-            <div class="md:flex md:items-center">
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="
+                md:grid md:grid-cols-2
+                gap-0
+                lg:mx-[150px]
+                bg-gradient-to-b
+                from-blue-200
+                px-6
+                py-16
+                lg:py-10
+                rounded-2xl
+              "
+            >
               <div>
-                <p
-                  class="
-                    text-base
-                    md:text-md
-                    lg:text-xl
-                    first-letter:text-3xl first-letter:font-bold
-                  "
-                >
-                  If you can't handle stress, you can't handle success.
-                </p>
-                <span class="float-right text-lg mt-2">~Unknown</span>
+                <img
+                  src="@/assets/img/slides/1.png"
+                  alt="header-img"
+                  class="md:w-full"
+                />
+              </div>
+              <div class="md:flex md:items-center">
+                <div>
+                  <p
+                    class="
+                      text-base
+                      md:text-md
+                      lg:text-xl
+                      first-letter:text-3xl first-letter:font-bold
+                    "
+                  >
+                    Terwujudnya Tenaga Kerja yang Produktif, Kompetitif, dan
+                    Sejahtera
+                  </p>
+                  <span class="float-right text-lg mt-2">~Unknown</span>
+                </div>
               </div>
             </div>
           </div>
           <!-- Item 2 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img
-              src="@/assets/img/1.jpg"
+            <div
               class="
-                absolute
-                block
-                w-full
-                -translate-x-1/2 -translate-y-1/2
-                top-1/2
-                left-1/2
+                md:grid md:grid-cols-2
+                gap-10
+                lg:mx-[150px]
+                bg-gradient-to-b
+                from-orange-300
+                px-6
+                py-16
+                lg:py-10
+                rounded-2xl
               "
-              alt="..."
-            />
+            >
+              <div>
+                <img
+                  src="@/assets/img/slides/5.png"
+                  alt="header-img"
+                  class="md:w-3/4"
+                />
+              </div>
+              <div class="md:flex md:items-center">
+                <div>
+                  <p
+                    class="
+                      text-base
+                      md:text-md
+                      lg:text-xl
+                      first-letter:text-3xl first-letter:font-bold
+                    "
+                  >
+                    Everyone has the same potential for success
+                  </p>
+                  <span class="float-right text-lg mt-2">~Unknown</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="
+                md:grid md:grid-cols-2
+                gap-10
+                lg:mx-[150px]
+                bg-gradient-to-b
+                from-orange-300
+                px-6
+                py-16
+                lg:py-10
+                rounded-2xl
+              "
+            >
+              <div>
+                <img
+                  src="@/assets/img/slides/1.png"
+                  alt="header-img"
+                  class="md:w-full"
+                />
+              </div>
+              <div class="md:flex md:items-center">
+                <div>
+                  <p
+                    class="
+                      text-base
+                      md:text-md
+                      lg:text-xl
+                      first-letter:text-3xl first-letter:font-bold
+                    "
+                  >
+                    The only way to achieve the impossible is to believe it is
+                    possible
+                  </p>
+                  <span class="float-right text-lg mt-2">~Unknown</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 4 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="
+                md:grid md:grid-cols-2
+                gap-10
+                lg:mx-[150px]
+                bg-gradient-to-b
+                from-blue-200
+                px-6
+                py-16
+                lg:py-10
+                rounded-2xl
+              "
+            >
+              <div>
+                <img
+                  src="@/assets/img/slides/3.png"
+                  alt="header-img"
+                  class="md:w-full"
+                />
+              </div>
+              <div class="md:flex md:items-center">
+                <div>
+                  <p
+                    class="
+                      text-base
+                      md:text-md
+                      lg:text-xl
+                      first-letter:text-3xl first-letter:font-bold
+                    "
+                  >
+                    Leaders can let you fail and yet not let you be a failure
+                  </p>
+                  <span class="float-right text-lg mt-2">~Unknown</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 5 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="
+                md:grid md:grid-cols-2
+                gap-10
+                lg:mx-[150px]
+                bg-gradient-to-b
+                from-orange-300
+                px-6
+                py-16
+                lg:py-10
+                rounded-2xl
+              "
+            >
+              <div>
+                <img
+                  src="@/assets/img/slides/7.png"
+                  alt="header-img"
+                  class="md:w-3/4"
+                />
+              </div>
+              <div class="md:flex md:items-center">
+                <div>
+                  <p
+                    class="
+                      text-base
+                      md:text-md
+                      lg:text-xl
+                      first-letter:text-3xl first-letter:font-bold
+                    "
+                  >
+                    It always seems impossible until it's done
+                  </p>
+                  <span class="float-right text-lg mt-2">~Unknown</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 6 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="
+                md:grid md:grid-cols-2
+                gap-10
+                lg:mx-[150px]
+                bg-gradient-to-b
+                from-blue-300
+                px-6
+                py-16
+                lg:py-10
+                rounded-2xl
+              "
+            >
+              <div>
+                <img
+                  src="@/assets/img/slides/4.png"
+                  alt="header-img"
+                  class="md:w-3/4"
+                />
+              </div>
+              <div class="md:flex md:items-center">
+                <div>
+                  <p
+                    class="
+                      text-base
+                      md:text-md
+                      lg:text-xl
+                      first-letter:text-3xl first-letter:font-bold
+                    "
+                  >
+                    If you can't handle stress, you can't handle success.
+                  </p>
+                  <span class="float-right text-lg mt-2">~Unknown</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Slider indicators -->
-        <!-- <div
-          class="
-            absolute
-            z-30
-            flex
-            space-x-3
-            -translate-x-1/2
-            bottom-5
-            left-1/2
-          "
-        >
-          <button
-            type="button"
-            class="w-3 h-3 rounded-full"
-            aria-current="true"
-            aria-label="Slide 1"
-            data-carousel-slide-to="0"
-          ></button>
-          <button
-            type="button"
-            class="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide 2"
-            data-carousel-slide-to="1"
-          ></button>
-          <button
-            type="button"
-            class="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide 3"
-            data-carousel-slide-to="2"
-          ></button>
-          <button
-            type="button"
-            class="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide 4"
-            data-carousel-slide-to="3"
-          ></button>
-          <button
-            type="button"
-            class="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide 5"
-            data-carousel-slide-to="4"
-          ></button>
-        </div> -->
-        <!-- Slider controls -->
         <button
           type="button"
           class="
@@ -454,9 +587,7 @@
 <script>
 export default {
   name: 'HomeComp',
-  // head(){
-  //   title: 'Home'
-  // },
+
   computed: {
     loker() {
       return this.$store.state.loker

@@ -9,5 +9,10 @@
 <script>
 export default {
   name: 'PerusahaanPage',
+  head() {
+    return {
+      title: 'Perusahaan',
+    }
+  },
 }
 </script>
