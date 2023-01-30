@@ -7,48 +7,13 @@
         md:py-0 md:flex md:flex-shrink-0 md:px-[70px]
         lg:px-[150px]
       "
-    >
-      <!-- <div
-        class="
-          md:flex md:justify-center
-          lg:mx-[150px]
-          bg-blue-200
-          px-6
-          py-16
-          lg:px-10
-          rounded-2xl
-        "
-      >
-        <div>
-          <img
-            src="@/assets/img/withoutbg.png"
-            alt="header-img"
-            class="md:w-3/4 lg:w-full"
-          />
-        </div>
-        <div class="md:flex md:items-center">
-          <div class="">
-            <p
-              class="
-                text-base
-                md:text-md
-                lg:text-xl
-                first-letter:text-3xl first-letter:font-bold
-              "
-            >
-              If you can't handle stress, you can't handle success.
-            </p>
-            <span class="float-right text-lg mt-2">~Unknown</span>
-          </div>
-        </div>
-      </div> -->
-    </div>
+    ></div>
     <div class="px-4">
       <div id="indicators-carousel" class="relative" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class="relative overflow-hidden rounded-lg h-96">
           <!-- Item 1 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
               class="
                 md:grid md:grid-cols-2
@@ -88,7 +53,7 @@
             </div>
           </div>
           <!-- Item 2 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
               class="
                 md:grid md:grid-cols-2
@@ -127,7 +92,7 @@
             </div>
           </div>
           <!-- Item 3 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
               class="
                 md:grid md:grid-cols-2
@@ -167,7 +132,7 @@
             </div>
           </div>
           <!-- Item 4 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
               class="
                 md:grid md:grid-cols-2
@@ -206,7 +171,7 @@
             </div>
           </div>
           <!-- Item 5 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
               class="
                 md:grid md:grid-cols-2
@@ -245,7 +210,7 @@
             </div>
           </div>
           <!-- Item 6 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
               class="
                 md:grid md:grid-cols-2
@@ -540,7 +505,11 @@
         "
       >
         <div>
-          <img src="@/assets/img/1.png" alt="content" />
+          <img
+            src="@/assets/img/1.png"
+            alt="content"
+            class="animate__animated animate__bounce"
+          />
         </div>
         <div>
           <p class="text-sm md:text-base font-bold pt-3 md:pt-0 md:pl-3">
