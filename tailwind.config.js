@@ -24,5 +24,10 @@ module.exports = {
       },
     },
   },
+  variants: {
+    extend: {
+      backgroundColor: ['active'],
+    },
+  },
   plugins: [require('flowbite'), require('flowbite/plugin')],
 }
