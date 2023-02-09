@@ -56,12 +56,9 @@ export const mutations = {
   },
   addToWish(state, data) {
     state.items.push(data)
-    // state.items = payload
-    console.log(state.items)
   },
   removeItem(state, data) {
     state.items.splice(data, 1)
-    console.log(data, state.items)
   },
 }
 
@@ -116,7 +113,6 @@ export const actions = {
         config
       )
       .then((response) => {
-        console.log('response', response.data)
         store.commit('setPerusahaan', response.data.data)
       })
       .catch(() => {
@@ -148,7 +144,6 @@ export const actions = {
         config
       )
       .then((res) => {
-        console.log('res', res.data.data)
         store.commit('setPelatihan', res.data.data)
       })
       .catch(() => {
