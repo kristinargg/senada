@@ -1,8 +1,10 @@
 <template>
   <div class="px-4 lg:px-[120px] font-poppins py-10">
-    <div class="text-center font-bold leading-10 border py-6 px-10">
-      <h1 class="text-lg">TINGKATKAN KEMAMPUAN MU DISINI</h1>
-      <p class="text-md py-6">
+    <div class="text-center leading-10 border py-6 px-10">
+      <h1 class="text-md md:text-lg font-bold">
+        TINGKATKAN KEMAMPUAN MU DISINI
+      </h1>
+      <p class="text-sm md:text-md text-info py-6">
         Layanan Pelatihan berbasis Offline di dukung dengan mitra mitra yang
         berpengalaman
       </p>
@@ -56,6 +58,14 @@
         </div>
       </form>
     </div>
+    <div
+      v-if="pelatihans.length === 0"
+      class="flex items-center bg-primary rounded-xl py-3 justify-center mt-10"
+    >
+      <p class="text-center text-xl text-white">
+        Pelatihan saat ini belum tersedia
+      </p>
+    </div>
     <div v-for="lth in pelatihans" :key="lth.id" class="py-10 px-4">
       <div>
         <div class="border relative">
@@ -69,6 +79,8 @@
               bg-secondary
               text-white
               opacity-75
+              text-sm
+              md:text-base
               bottom-0
             "
             >{{ lth.title }}</span

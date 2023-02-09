@@ -41,7 +41,12 @@ export default {
   css: ['@/assets/css/input.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/persistedState.client.js' },
+    { src: '~/plugins/notif.js', ssr: false },
+  ],
+
+  // { src: '~/plugins/persistedState.client.js' } { src: '~/plugins/notif.js' },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

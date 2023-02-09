@@ -3,7 +3,7 @@
     <div
       class="
         px-4
-        py-10
+        pb-10
         md:py-0 md:flex md:flex-shrink-0 md:px-[70px]
         lg:px-[150px]
       "
@@ -62,7 +62,7 @@
                 bg-gradient-to-b
                 from-orange-300
                 px-6
-                py-16
+                py-3
                 lg:py-10
                 rounded-2xl
               "
@@ -101,16 +101,16 @@
                 bg-gradient-to-b
                 from-orange-300
                 px-6
-                py-16
+                py-3
                 lg:py-10
                 rounded-2xl
               "
             >
               <div>
                 <img
-                  src="@/assets/img/slides/1.png"
+                  src="@/assets/img/slides/8.png"
                   alt="header-img"
-                  class="md:w-full"
+                  class="md:w-3/4"
                 />
               </div>
               <div class="md:flex md:items-center">
@@ -180,7 +180,7 @@
                 bg-gradient-to-b
                 from-orange-300
                 px-6
-                py-16
+                py-3
                 lg:py-10
                 rounded-2xl
               "
@@ -219,7 +219,7 @@
                 bg-gradient-to-b
                 from-blue-300
                 px-6
-                py-16
+                py-3
                 lg:py-10
                 rounded-2xl
               "
@@ -385,7 +385,24 @@
           </div>
         </div>
         <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
-          <div v-for="kerja in loker" :key="kerja.id" class="py-2">
+          <div
+            v-if="loker.length === 0"
+            class="
+              flex
+              items-center
+              justify-center
+              text-sm
+              md:text-xl
+              py-3
+              px-10
+              bg-white
+              rounded
+            "
+          >
+            <p class="text-center">Informasi lowongan kerja sedang tidak ada</p>
+          </div>
+
+          <div v-for="kerja in loker" v-else :key="kerja.link" class="py-2">
             <div class="bg-white rounded-md py-2 px-2 md:p-4">
               <div
                 class="
@@ -402,7 +419,7 @@
                   <p>{{ kerja.type_name }} |</p>
                   <p>{{ kerja.category_name }}</p>
                 </div>
-                <div>
+                <div class="hidden">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -556,19 +573,31 @@
 <script>
 export default {
   name: 'HomeComp',
-
+  data() {
+    return {
+      wishlist: [],
+      job_name: null,
+      // wish: {
+      //   job_name: null,
+      // },
+    }
+  },
   computed: {
     loker() {
       return this.$store.state.loker
     },
   },
   mounted() {
-    this.fetchLoker()
+    this.fetchHomeLoker()
   },
   methods: {
-    fetchLoker() {
-      this.$store.dispatch('fetchLoker')
+    fetchHomeLoker() {
+      this.$store.dispatch('fetchHomeLoker')
     },
+    // addToWishlist() {
+    //   this.wishlist.push(this.wish)
+    //   console.log(this.wishlist)
+    // },
   },
 }
 </script>

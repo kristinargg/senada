@@ -91,7 +91,15 @@
         >
       </div>
     </div>
-    <div class="bg-primary p-3 rounded-lg md:grid md:grid-cols-3 gap-5">
+    <div
+      v-if="jobfair.length === 0"
+      class="flex items-center justify-center bg-primary py-3 mt-10 rounded-xl"
+    >
+      <p class="text-center text-xl text-white">
+        Job Fair untuk saat ini belum tersedia
+      </p>
+    </div>
+    <div v-else class="bg-primary p-3 rounded-lg md:grid md:grid-cols-3 gap-5">
       <div v-for="job in jobfair" :key="job.id" class="py-2">
         <div class="p-4 bg-white rounded-md md:grid md:grid-cols-2">
           <div class="relative">

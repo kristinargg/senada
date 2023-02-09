@@ -52,40 +52,235 @@
               "
               placeholder="Search..."
               required
+              @keyup="fetchLoker()"
             />
           </div>
         </form>
 
-        <div class="py-2 px-2 md:py-2 md:px-4 bg-info rounded-lg">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-5 h-5 md:w-6 md:h-6"
+        <div>
+          <button
+            data-modal-target="authentication-modal"
+            data-modal-toggle="authentication-modal"
+            class="py-2 px-2 md:py-2 md:px-4 bg-info rounded-lg"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
-            />
-          </svg>
-          <!-- <div>
-            <form action="" method="get">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5 md:w-6 md:h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
+              />
+            </svg>
+          </button>
 
-            </form>
-          </div> -->
+          <!-- Main modal -->
+          <div
+            id="authentication-modal"
+            tabindex="-1"
+            aria-hidden="true"
+            class="
+              fixed
+              top-0
+              left-0
+              right-0
+              z-50
+              hidden
+              w-full
+              p-4
+              overflow-x-hidden overflow-y-auto
+              md:inset-0
+              h-modal
+              md:h-full
+              justify-center
+              items-center
+            "
+          >
+            <div class="relative w-full h-full max-w-md md:h-auto">
+              <!-- Modal content -->
+              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button
+                  type="button"
+                  class="
+                    absolute
+                    top-3
+                    right-2.5
+                    text-gray-400
+                    bg-transparent
+                    hover:bg-gray-200 hover:text-gray-900
+                    rounded-lg
+                    text-sm
+                    p-1.5
+                    ml-auto
+                    inline-flex
+                    items-center
+                    dark:hover:bg-gray-800 dark:hover:text-white
+                  "
+                  data-modal-hide="authentication-modal"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+                </button>
+                <div class="px-6 py-6 lg:px-8">
+                  <h3
+                    class="
+                      mb-4
+                      text-xl
+                      font-medium
+                      text-gray-900
+                      dark:text-white
+                    "
+                  >
+                    Filter lowongan kerja
+                  </h3>
+                  <form class="space-y-6" action="#">
+                    <div>
+                      <label
+                        for="countries"
+                        class="
+                          block
+                          mb-2
+                          text-sm
+                          font-medium
+                          text-gray-900
+                          dark:text-white
+                        "
+                        >Pilih opsi Tipe</label
+                      >
+                      <select
+                        id="type"
+                        v-model="selectedType"
+                        class="
+                          bg-gray-50
+                          border border-gray-300
+                          text-gray-900 text-sm
+                          rounded-lg
+                          focus:ring-blue-500 focus:border-blue-500
+                          block
+                          w-full
+                          p-2.5
+                          dark:bg-gray-700
+                          dark:border-gray-600
+                          dark:placeholder-gray-400
+                          dark:text-white
+                          dark:focus:ring-blue-500
+                          dark:focus:border-blue-500
+                        "
+                      >
+                        <option selected disabled>
+                          Pilih tipe lowongan kerja
+                        </option>
+                        <option
+                          v-for="type in types"
+                          :key="type.id"
+                          :value="type.value"
+                        >
+                          {{ type.type }}
+                        </option>
+                      </select>
+                    </div>
+                    <div>
+                      <label
+                        for="countries"
+                        class="
+                          block
+                          mb-2
+                          text-sm
+                          font-medium
+                          text-gray-900
+                          dark:text-white
+                        "
+                        >Pilih opsi Category</label
+                      >
+                      <select
+                        id="category"
+                        v-model="selectedCategory"
+                        class="
+                          bg-gray-50
+                          border border-gray-300
+                          text-gray-900 text-sm
+                          rounded-lg
+                          focus:ring-blue-500 focus:border-blue-500
+                          block
+                          w-full
+                          p-2.5
+                          dark:bg-gray-700
+                          dark:border-gray-600
+                          dark:placeholder-gray-400
+                          dark:text-white
+                          dark:focus:ring-blue-500
+                          dark:focus:border-blue-500
+                        "
+                      >
+                        <option selected disabled>
+                          Pilih Category lowongan kerja
+                        </option>
+                        <option
+                          v-for="ctg in categories"
+                          :key="ctg.id"
+                          :value="ctg.value"
+                        >
+                          {{ ctg.category }}
+                        </option>
+                      </select>
+                    </div>
+                    <button
+                      class="py-2 block w-full bg-secondary rounded text-white"
+                    >
+                      filter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="pt-10">
       <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
-        <div v-for="kerja in loker" :key="kerja.id" class="py-2">
-          <div v-if="kerja.length === 0" class="flex items-center">
-            <p class="text-center">Data belum tersedia</p>
-          </div>
-          <div v-else class="bg-white rounded-md py-2 px-2 md:p-4">
+        <div
+          v-if="loker.length === 0"
+          class="
+            flex
+            items-center
+            justify-center
+            text-sm
+            md:text-xl
+            py-3
+            px-10
+            bg-white
+            rounded
+          "
+        >
+          <p class="text-center">
+            Informasi lowongan kerja
+            <span class="text-red-600 font-bold text-sm md:text-base">
+              {{ search }}
+            </span>
+            sedang tidak ada
+          </p>
+        </div>
+
+        <div v-for="(kerja, index) in loker" v-else :key="index" class="py-2">
+          <div class="bg-white rounded-md py-2 px-2 md:p-4">
             <div
               class="
                 flex
@@ -101,7 +296,7 @@
                 <p>{{ kerja.type_name }} |</p>
                 <p>{{ kerja.category_name }}</p>
               </div>
-              <div>
+              <div class="cursor-pointer" @click="addToWishlist(kerja)">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -109,8 +304,6 @@
                   stroke-width="1.5"
                   stroke="currentColor"
                   class="w-4 h-4"
-                  :class="mark == true ? 'bg-red-500' : 'bg-none'"
-                  @click="handleClick()"
                 >
                   <path
                     stroke-linecap="round"
@@ -192,96 +385,18 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-center">
-          <!-- <Pagination /> -->
-          <!-- <div class="isolate inline-flex -space-x-px rounded-md shadow-sm">
-            <a
-              class="
-                relative
-                inline-flex
-                items-center
-                rounded-l-md
-                border border-gray-300
-                bg-white
-                px-2
-                py-2
-                text-sm
-                font-medium
-                text-gray-500
-                hover:bg-gray-50
-                focus:z-20
-              "
-            >
-              <span class="sr-only">Previous</span>
-              <svg
-                class="h-5 w-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-            <a
-              v-for="(i, index) in loker.meta.pagination.last_page"
-              :key="index"
-              class="
-                relative
-                inline-flex
-                items-center
-                border border-gray-300
-                bg-white
-                px-4
-                py-2
-                text-sm
-                font-medium
-                text-gray-500
-                hover:bg-gray-50
-                focus:z-20
-              "
-              >{{ i }}</a
-            >
-            <a
-              class="
-                relative
-                inline-flex
-                items-center
-                rounded-r-md
-                border border-gray-300
-                bg-white
-                px-2
-                py-2
-                text-sm
-                font-medium
-                text-gray-500
-                hover:bg-gray-50
-                focus:z-20
-              "
-              @click="next()"
-            >
-              <span class="sr-only">Next</span>
-              <svg
-                class="h-5 w-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </div> -->
+        <notifications
+          group="succ"
+          position="top center"
+          class="mt-5 font-sen text-2xl w-full"
+        />
+        <notifications
+          group="succ"
+          position="top center"
+          class="mt-5 font-sen text-2xl w-full"
+        />
+        <!-- <div class="flex justify-center">
           <button
-            :disabled="loker.length === 22"
             class="
               py-2
               px-6
@@ -295,7 +410,7 @@
           >
             More
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -309,15 +424,60 @@ export default {
   // },
   data() {
     return {
-      page: 1,
-      mark: false,
       search: '',
+      error: '404',
+      isClick: false,
+      selectedType: '',
+      selectedCategory: '',
+      types: [
+        { id: 1, type: 'Full Time', value: 'ft' },
+        { id: 2, type: 'Contract', value: 'ct' },
+      ],
+      categories: [
+        { id: 1, category: 'IT & Software', value: 'IT & Software' },
+        {
+          id: 2,
+          category: 'Sales & Marketing',
+          value: 'Sales & Marketing',
+        },
+        {
+          id: 3,
+          category: 'Administrasi & Koordinasi',
+          value: 'Administrasi & Koordinasi',
+        },
+        {
+          id: 4,
+          category: 'Akutansi & Keuangan',
+          value: 'Akutansi & Keuangan',
+        },
+        {
+          id: 5,
+          category: 'Manajemen & Konsultasi',
+          value: 'Manajemen & Konsultasi',
+        },
+      ],
     }
   },
 
   computed: {
     loker() {
-      return this.$store.state.loker
+      if (!this.search) {
+        return this.$store.state.loker
+      } else {
+        return this.$store.state.loker.filter((job) => {
+          return (
+            job.job_name.toLowerCase().includes(this.search) ||
+            job.type_name.toLowerCase().includes(this.search) ||
+            job.category_name.toLowerCase().includes(this.search) ||
+            job.company_name.toLowerCase().includes(this.search)
+          )
+        })
+      }
+
+      // if (this.$store.state.loker === '') {return 'datatidakada'}
+    },
+    items() {
+      return this.$store.state.items
     },
   },
   mounted() {
@@ -327,20 +487,45 @@ export default {
     fetchLoker() {
       this.$store.dispatch('fetchLoker')
     },
-    fetchMoreLoker() {
-      this.$store.dispatch('fetchMoreLoker')
-    },
-    handleClick() {
-      this.mark = true
-      this.index = 1
-    },
-    filterData() {
-      if (this.search) {
-        return this.loker.filter((job) =>
-          job.job_name.toLowerCase().toUpperCase().includes(this.search)
-        )
+    addToWishlist(data) {
+      const found = this.$store.state.items.find((item) => item === data)
+      if (found) {
+        found.items = !found.items
+        this.$notify({
+          group: 'succ',
+          type: 'error',
+          title: 'Add to Wish List',
+          text: 'lowongan kerja telah ditambahkan ke wish list',
+        })
       } else {
-        return this.wisata
+        this.$store.dispatch('addToWishlist', data)
+        this.$notify({
+          group: 'succ',
+          type: 'success',
+          title: 'Add to Wish List',
+          text: 'lowongan kerja berhasil ditambahkan ke wish list',
+        })
+        // alert('lowongan kerja berhasil ditambahkan ke wish list', data)
+      }
+      // const date = new Date().toLocaleString
+    },
+    // fetchMoreLoker() {
+    //   this.$store.dispatch('fetchMoreLoker')
+    // },
+    filterLoker() {
+      if (!this.selectedType && this.selectedCategory) {
+        return this.$store.state.loker
+      } else {
+        return this.$store.state.loker.filter((job) => {
+          return (
+            job.type_name
+              .toLowerCase()
+              .includes(this.selectedType && this.selectedCategory) &&
+            job.category_name
+              .toLowerCase()
+              .includes(this.selectedType && this.selectedCategory)
+          )
+        })
       }
     },
   },

@@ -10,10 +10,10 @@
             class="
               absolute
               inset-y-0
-              right-0
+              left-0
               flex
               items-center
-              pr-3
+              pl-3
               pointer-events-none
             "
           >
@@ -35,6 +35,7 @@
           </div>
           <input
             id="default-search"
+            v-model="search"
             type="search"
             class="
               block
@@ -50,6 +51,7 @@
             "
             placeholder="Search..."
             required
+            @keyup="fetchPerusahaan"
           />
         </div>
       </form>
@@ -67,17 +69,32 @@
         my-10
       "
     >
-      <div v-for="company in perusahaan" :key="company.id">
-        <div v-if="company.length === 0" class="flex items-center">
-          <p class="text-center text-xl text-white">
-            Data perusahaan pemberi kerja belum tersedia
-          </p>
-        </div>
-        <div v-else class="bg-white rounded-md p-4">
+      <div
+        v-if="perusahaan.length === 0"
+        class="flex items-center justify-center"
+      >
+        <p class="text-center text-xl text-white">
+          Data perusahaan pemberi kerja belum tersedia
+        </p>
+      </div>
+      <div v-for="company in perusahaan" v-else :key="company.id">
+        <div class="bg-white rounded-md p-4">
           <div class="flex justify-center">
             <img
+              v-if="company.logo !== null"
               :src="company.logo"
               class="rounded-full w-24 md:w-32 md:h-32 object-fill bg-slate-200"
+            />
+            <img
+              v-else
+              src="@/assets/img/no-image.png"
+              class="
+                rounded-full
+                w-24
+                md:w-32 md:h-32
+                object-cover
+                bg-slate-200
+              "
             />
           </div>
           <!-- <div class="bg-slate-200 p-10 rounded-full"></div> -->
@@ -117,7 +134,7 @@
                   />
                 </svg>
                 <p v-if="company.phone === null" class="pl-2">
-                  {{ company.email }}
+                  Nomor telepon saat ini belum tersedia
                 </p>
                 <p class="pl-2">{{ company.phone }}</p>
               </div>
@@ -163,9 +180,20 @@
 <script>
 export default {
   name: 'PerusahaanComp',
+  data() {
+    return {
+      search: '',
+    }
+  },
   computed: {
     perusahaan() {
-      return this.$store.state.perusahaan
+      if (this.search) {
+        return this.$store.state.perusahaan.filter((company) => {
+          return company.company_name.toLowerCase().includes(this.search)
+        })
+      } else {
+        return this.$store.state.perusahaan
+      }
     },
   },
   mounted() {

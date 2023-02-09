@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import LowonganKerja from '~/components/lowongan-kerja.vue'
+// import LowonganKerja from '~/components/lowongan-kerja.vue'
 export default {
   name: 'LokerPage',
-  components: { LowonganKerja },
+  // components: { LowonganKerja },
   head() {
     return {
       title: 'Lowongan Kerja',

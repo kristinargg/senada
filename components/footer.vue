@@ -1,6 +1,6 @@
 <template>
   <div id="footer" class="font-sen">
-    <div>
+    <div class="bottom-0">
       <div class="bg-info px-4 py-10 lg:px-[150px] lg:py-[100px] bottom-0">
         <div class="block md:grid md:grid-cols-3 space-y-4">
           <div class="flex justify-center">

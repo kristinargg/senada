@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 // import cors from 'cors'
-
 Vue.use(Vuex)
 
 const config = {
@@ -15,24 +14,32 @@ const config = {
     limit: 5,
   },
 }
+const head = {
+  headers: {
+    Authorization: `Bearer c9f531964260906544cd14c31accadcb2b66ec5dc68da9c576674f3990d6acad`,
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+  },
+}
 // axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
 export const state = () => ({
   token: 'c9f531964260906544cd14c31accadcb2b66ec5dc68da9c576674f3990d6acad',
   prov_code: '224c2de4-72b5-4e58-9f20-5f869d68ddab', // 224c2de4-72b5-4e58-9f20-5f869d68ddab 5f72ce17-18b4-4742-862e-9dd92e8ade23
   loker: [],
-  lokers: [],
+  items: [],
   jobfair: [],
   perusahaan: [],
   paginations: [],
   pelatihans: [],
   error: 404,
   page: 1,
+  search: '',
 })
 
 export const mutations = {
   setListLoker(state, payload) {
     state.loker = payload
-    ++state.page
+    // ++state.page
   },
   setListJobfair(state, payload) {
     state.jobfair = payload
@@ -47,8 +54,14 @@ export const mutations = {
   setError(state, payload) {
     state.error = payload
   },
-  setLokers(state, payload) {
-    state.lokes = payload
+  addToWish(state, data) {
+    state.items.push(data)
+    // state.items = payload
+    console.log(state.items)
+  },
+  removeItem(state, data) {
+    state.items.splice(data, 1)
+    console.log(data, state.items)
   },
 }
 
@@ -56,12 +69,10 @@ export const actions = {
   fetchLoker(store) {
     axios
       .get(
-        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&page=` +
-          this.state.page,
-        config
+        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&page=${this.state.page}`,
+        head
       )
       .then((res) => {
-        console.log('res', res.data.data)
         store.commit('setListLoker', res.data.data)
       })
     // .catch(() => {
@@ -69,14 +80,14 @@ export const actions = {
     //   store.commit(this.state.setInfoError)
     // })
   },
-  fetchMoreLoker(store) {
+  fetchHomeLoker(store) {
     axios
       .get(
-        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&page=${this.state.page}`,
-        config
+        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&limit=5`,
+        head
       )
       .then((res) => {
-        store.commit('setListLoker', [...store.state.loker, ...res.data.data])
+        store.commit('setListLoker', res.data.data)
       })
       .catch((error) => {
         // console.error()
@@ -143,5 +154,11 @@ export const actions = {
       .catch(() => {
         store.commit('setError', this.state.error)
       })
+  },
+  addToWishlist({ commit }, data) {
+    commit('addToWish', data)
+  },
+  remove(store, data) {
+    store.commit('removeItem', data)
   },
 }
