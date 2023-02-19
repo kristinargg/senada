@@ -4,7 +4,7 @@
       <h1 class="text-md md:text-lg font-bold">
         TINGKATKAN KEMAMPUAN MU DISINI
       </h1>
-      <p class="text-sm md:text-md text-info py-6">
+      <p class="text-sm md:text-md text-info1 py-6">
         Layanan Pelatihan berbasis Offline di dukung dengan mitra mitra yang
         berpengalaman
       </p>
@@ -39,6 +39,7 @@
           </div>
           <input
             id="default-search"
+            v-model="search"
             type="search"
             class="
               block
@@ -54,6 +55,7 @@
             "
             placeholder="Search..."
             required
+            @keyup="fetchPelatihan()"
           />
         </div>
       </form>
@@ -62,12 +64,13 @@
       v-if="pelatihans.length === 0"
       class="flex items-center bg-primary rounded-xl py-3 justify-center mt-10"
     >
-      <p class="text-center text-xl text-white">
-        Pelatihan saat ini belum tersedia
+      <p class="text-center text-md md:text-xl text-white">
+        Pelatihan <span class="text-red-500">{{ search }}</span> saat ini belum
+        tersedia
       </p>
     </div>
     <div v-for="lth in pelatihans" :key="lth.id" class="py-10 px-4">
-      <div>
+      <div class="border rounded">
         <div class="border relative">
           <img :src="lth.cover" alt="cover" class="w-full h-72 object-cover" />
           <span
@@ -86,7 +89,9 @@
             >{{ lth.title }}</span
           >
         </div>
-        <div class="md:flex md:justify-between py-4 border-b-2 border-black">
+        <div
+          class="md:flex md:justify-between py-4 px-2 border-b-2 border-black"
+        >
           <h1 class="text-sm md:text-md font-bold">
             {{ lth.sub_vocational }} / {{ lth.vocational }}
           </h1>
@@ -109,7 +114,7 @@
           </div>
         </div>
 
-        <div class="text-[12px] md:text-sm py-2">
+        <div class="text-[12px] md:text-sm py-2 px-1">
           <a
             :href="lth.link"
             class="
@@ -124,43 +129,6 @@
             >Detail Pelatihan |➡️</a
           >
         </div>
-        <!-- <div class="flex justify-end space-x-5 text-sm items-center py-2">
-          <div
-            class="
-              flex
-              justify-center
-              items-center
-              py-2
-              px-6
-              bg-secondary
-              opacity-80
-              rounded-lg
-              text-white
-            "
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-4 h-4"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-              />
-            </svg>
-            <span class="pl-2">lokasi</span>
-          </div>
-          <p class="py-2 px-6 bg-slate-200 opacity-80 rounded-lg">fulltime</p>
-        </div> -->
       </div>
     </div>
   </div>
@@ -169,9 +137,20 @@
 <script>
 export default {
   name: 'PelatihanComp',
+  data() {
+    return {
+      search: '',
+    }
+  },
   computed: {
     pelatihans() {
-      return this.$store.state.pelatihans
+      if (!this.search) {
+        return this.$store.state.pelatihans
+      } else {
+        return this.$store.state.pelatihans.filter((latih) => {
+          return latih.title.toLowerCase().includes(this.search)
+        })
+      }
     },
   },
   mounted() {

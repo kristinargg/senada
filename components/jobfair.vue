@@ -1,54 +1,61 @@
 <template>
   <div class="px-4 lg:px-[120px] font-poppins py-10">
-    <form class="w-full">
-      <div class="relative w-full">
-        <div
-          class="
-            absolute
-            inset-y-0
-            right-0
-            flex
-            items-center
-            pr-3
-            pointer-events-none
-          "
-        >
-          <svg
-            aria-hidden="true"
-            class="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+    <div class="border p-4 lg:py-10 lg:px-[75px]">
+      <h4 class="text-center py-2 font-bold text-sm lg:text-lg">
+        Temukan pekerjaan dengan waktu yang tepat
+      </h4>
+      <form class="w-full">
+        <div class="relative w-full">
+          <div
+            class="
+              absolute
+              inset-y-0
+              right-0
+              flex
+              items-center
+              pr-3
+              pointer-events-none
+            "
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            ></path>
-          </svg>
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </div>
+          <input
+            id="default-search"
+            v-model="search"
+            type="search"
+            class="
+              block
+              w-full
+              p-2
+              pl-10
+              text-sm
+              border
+              bg-info
+              outline-none
+              rounded-full
+              focus:ring-primary focus:border-primary
+            "
+            placeholder="Search..."
+            required
+            @keyup="fetchJobfair"
+          />
         </div>
-        <input
-          id="default-search"
-          type="search"
-          class="
-            block
-            w-full
-            p-2
-            pl-10
-            text-sm
-            border
-            bg-info
-            outline-none
-            rounded-full
-            focus:ring-primary focus:border-primary
-          "
-          placeholder="Search..."
-          required
-        />
-      </div>
-    </form>
+      </form>
+    </div>
     <div
       class="
         bg-jobfair
@@ -78,7 +85,7 @@
       </div>
       <div class="flex items-center w-full md:w-1/2">
         <a
-          href="#"
+          href="https://jobfair.kemnaker.go.id/"
           class="
             py-2
             px-4
@@ -87,6 +94,7 @@
             text-center text-white
             rounded-lg
           "
+          target="_blank"
           >Daftar Sekarang!</a
         >
       </div>
@@ -95,8 +103,9 @@
       v-if="jobfair.length === 0"
       class="flex items-center justify-center bg-primary py-3 mt-10 rounded-xl"
     >
-      <p class="text-center text-xl text-white">
-        Job Fair untuk saat ini belum tersedia
+      <p class="text-center text-md md:text-xl text-white">
+        Job Fair <span class="text-red-500">{{ search }}</span> untuk saat ini
+        belum tersedia
       </p>
     </div>
     <div v-else class="bg-primary p-3 rounded-lg md:grid md:grid-cols-3 gap-5">
@@ -110,15 +119,14 @@
             />
             <span
               class="
-                py-2
+                py-1
                 px-2
-                bg-gray-300
-                opacity-80
+                bg-info1
                 absolute
                 top-0
                 text-sm
                 font-bold
-                rounded-l
+                rounded-tl
               "
               >{{ job.jobfair_type }}</span
             >
@@ -154,9 +162,20 @@
 <script>
 export default {
   name: 'JobfairComp',
+  data() {
+    return {
+      search: '',
+    }
+  },
   computed: {
     jobfair() {
-      return this.$store.state.jobfair
+      if (!this.search) {
+        return this.$store.state.jobfair
+      } else {
+        return this.$store.state.jobfair.filter((job) => {
+          return job.jobfair_name.toLowerCase().includes(this.search)
+        })
+      }
     },
   },
   mounted() {

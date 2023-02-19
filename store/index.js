@@ -41,6 +41,11 @@ export const mutations = {
     state.loker = payload
     // ++state.page
   },
+  increment(state, payload) {
+    state.loker = payload
+    state.page += 1
+    console.log(state.page)
+  },
   setListJobfair(state, payload) {
     state.jobfair = payload
   },
@@ -66,10 +71,11 @@ export const actions = {
   fetchLoker(store) {
     axios
       .get(
-        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&page=${this.state.page}`,
+        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}`,
         head
       )
       .then((res) => {
+        console.log('response', res.data)
         store.commit('setListLoker', res.data.data)
       })
     // .catch(() => {
@@ -77,25 +83,11 @@ export const actions = {
     //   store.commit(this.state.setInfoError)
     // })
   },
-  fetchHomeLoker(store) {
-    axios
-      .get(
-        `https://data.kemnaker.go.id/api/v1/services/14d11dbe-11a8-4ba2-8188-38b2bbacb4df?prov_code=${this.state.prov_code}&limit=5`,
-        head
-      )
-      .then((res) => {
-        store.commit('setListLoker', res.data.data)
-      })
-      .catch((error) => {
-        // console.error()
-        store.commit('setError', error)
-      })
-  },
   fetchJobfair(store) {
     axios
       .get(
         `https://data.kemnaker.go.id/api/v1/services/41a44781-00f1-4adf-800c-7f7327e41e2e`,
-        config
+        head
       )
       .then((res) => {
         // console.log('response', res.data.data)
@@ -141,7 +133,7 @@ export const actions = {
     axios
       .get(
         `https://data.kemnaker.go.id/api/v1/services/38fe1841-5b66-4278-9b18-6058c8b1d651?prov_code=${this.state.prov_code}`,
-        config
+        head
       )
       .then((res) => {
         store.commit('setPelatihan', res.data.data)

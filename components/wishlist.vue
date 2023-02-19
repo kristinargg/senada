@@ -45,29 +45,33 @@
             />
           </svg>
         </div>
-        <a :href="item.link" target="_blank" rel="noopener noreferrer">
-          <div
-            class="
-              grid grid-cols-1
-              lg:flex lg:justify-between lg:items-center
-              text-center
-            "
-          >
-            <img :src="item.logo" :alt="item.job_name" class="rounded w-16" />
-            <div class="text-left">
-              <h4 class="text-md lg:text-lg text-left font-bold font-sen">
-                {{ item.job_name }} ~ {{ item.type_name }}
-              </h4>
-            </div>
+        <div
+          class="
+            grid grid-cols-1
+            lg:flex lg:justify-between lg:items-center
+            text-center
+          "
+        >
+          <img :src="item.logo" :alt="item.job_name" class="rounded w-16" />
+          <div class="text-left">
+            <h4
+              class="
+                text-md
+                lg:text-lg
+                text-left
+                font-bold font-sen
+                hover:underline
+              "
+            >
+              <a :href="item.link" target="_blank" rel="noopener noreferrer">
+                {{ item.job_name }}</a
+              >
+              ~ {{ item.type_name }}
+            </h4>
           </div>
-        </a>
+        </div>
       </div>
     </div>
-    <notifications
-      group="foo"
-      position="top left"
-      class="mt-2 font-sen text-lg"
-    />
   </div>
 </template>
 
@@ -81,14 +85,33 @@ export default {
   },
   methods: {
     removeItem(data) {
-      this.$store.dispatch('remove', data)
-      this.$notify({
-        group: 'foo',
-        type: 'success',
-        title: 'Delete Wish List',
-        text: 'success delete wish list',
-        color: '#000000',
-      })
+      this.$swal
+        .fire({
+          title: 'Apakah kamu yakin?',
+          text: 'Kamu ingin menghapus lowongan kerja dari daftar wish list',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#062647',
+          cancelButtonColor: '#ff7f32',
+          confirmButtonText: 'Ya, Hapus!',
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.$swal.fire(
+              'Berhasil!',
+              'Lowongan kerja telah berhasil di hapus',
+              'success'
+            )
+            this.$store.dispatch('remove', data)
+          }
+        })
+      // this.$notify({
+      //   group: 'foo',
+      //   type: 'success',
+      //   title: 'Delete Wish List',
+      //   text: 'success delete wish list',
+      //   color: '#000000',
+      // })
     },
   },
 }

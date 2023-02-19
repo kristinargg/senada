@@ -42,8 +42,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/persistedState.client.js' },
-    { src: '~/plugins/notif.js', ssr: false },
+    // { src: '~/plugins/persistedState.client.js' },
+    // { src: '~/plugins/notif.js', ssr: false },
+    { src: '~/plugins/alertmodal.js', ssr: false },
   ],
 
   // { src: '~/plugins/persistedState.client.js' } { src: '~/plugins/notif.js' },

@@ -57,7 +57,7 @@
           </div>
         </form>
 
-        <div>
+        <!-- <div>
           <button
             data-modal-target="authentication-modal"
             data-modal-toggle="authentication-modal"
@@ -79,7 +79,7 @@
             </svg>
           </button>
 
-          <!-- Main modal -->
+          Main modal
           <div
             id="authentication-modal"
             tabindex="-1"
@@ -102,7 +102,7 @@
             "
           >
             <div class="relative w-full h-full max-w-md md:h-auto">
-              <!-- Modal content -->
+              Modal content
               <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <button
                   type="button"
@@ -154,14 +154,7 @@
                     <div>
                       <label
                         for="countries"
-                        class="
-                          block
-                          mb-2
-                          text-sm
-                          font-medium
-                          text-gray-900
-                          dark:text-white
-                        "
+                        class="block mb-2 text-sm font-medium text-gray-900"
                         >Pilih opsi Tipe</label
                       >
                       <select
@@ -183,6 +176,7 @@
                           dark:focus:ring-blue-500
                           dark:focus:border-blue-500
                         "
+                        @keyup="filterCategory"
                       >
                         <option selected disabled>
                           Pilih tipe lowongan kerja
@@ -228,6 +222,7 @@
                           dark:focus:ring-blue-500
                           dark:focus:border-blue-500
                         "
+                        @keyup="filterCategory"
                       >
                         <option selected disabled>
                           Pilih Category lowongan kerja
@@ -243,6 +238,7 @@
                     </div>
                     <button
                       class="py-2 block w-full bg-secondary rounded text-white"
+                      @keyup="filterSearch(selectedType, selectedCategory)"
                     >
                       filter
                     </button>
@@ -251,13 +247,126 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="pt-10">
       <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
+        <!-- <div>
+          {{ loker.length }}
+        </div> -->
+
+        <div v-if="loker.length !== 0">
+          <div v-for="(kerja, index) in loker" :key="index" class="py-2">
+            <div class="bg-white rounded-md py-2 px-2 md:p-4">
+              <div
+                class="
+                  flex
+                  justify-between
+                  text-center
+                  bg-slate-200
+                  px-2
+                  py-1
+                  rounded
+                "
+              >
+                <div class="flex space-x-1 text-[10px] md:text-sm">
+                  <p>{{ kerja.type_name }} |</p>
+                  <p>{{ kerja.category_name }}</p>
+                </div>
+                <div class="cursor-pointer" @click="addToWishlist(kerja)">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="md:flex md:justify-between">
+                <div class="font-sen py-2 flex space-x-4 items-center">
+                  <div>
+                    <img :src="kerja.logo" :alt="kerja.job_name" class="w-10" />
+                    <!-- <div class="py-5 px-5 bg-slate-500 rounded-full">
+
+                    </div> -->
+                  </div>
+                  <div>
+                    <p class="font-bold text-[12px] md:text-base">
+                      {{ kerja.job_name }}
+                    </p>
+                    <div class="flex space-x-1 items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-4 h-4"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
+                        />
+                      </svg>
+
+                      <p class="font-medium text-[10px] md:text-sm">
+                        {{ kerja.company_name }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <a :href="kerja.link" target="_blank" class="flex items-center">
+                  <div
+                    class="
+                      flex
+                      text-[10px]
+                      md:text-[12px] md:my-2
+                      py-2
+                      px-4
+                      bg-secondary
+                      rounded-md
+                      justify-center
+                      font-bold
+                      items-center
+                      w-full
+                      duration-500
+                      hover:transition hover:ease-in-out hover:shadow-md
+                    "
+                  >
+                    <button>Details</button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div
-          v-if="loker.length === 0"
+          v-else
           class="
             flex
             items-center
@@ -278,139 +387,6 @@
             sedang tidak ada
           </p>
         </div>
-
-        <div v-for="(kerja, index) in loker" v-else :key="index" class="py-2">
-          <div class="bg-white rounded-md py-2 px-2 md:p-4">
-            <div
-              class="
-                flex
-                justify-between
-                text-center
-                bg-slate-200
-                px-2
-                py-1
-                rounded
-              "
-            >
-              <div class="flex space-x-1 text-[10px] md:text-sm">
-                <p>{{ kerja.type_name }} |</p>
-                <p>{{ kerja.category_name }}</p>
-              </div>
-              <div class="cursor-pointer" @click="addToWishlist(kerja)">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-4 h-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="md:flex md:justify-between">
-              <div class="font-sen py-2 flex space-x-4 items-center">
-                <div>
-                  <img :src="kerja.logo" :alt="kerja.job_name" class="w-10" />
-                  <!-- <div class="py-5 px-5 bg-slate-500 rounded-full">
-
-                    </div> -->
-                </div>
-                <div>
-                  <p class="font-bold text-[12px] md:text-base">
-                    {{ kerja.job_name }}
-                  </p>
-                  <div class="flex space-x-1 items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-4 h-4"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
-                      />
-                    </svg>
-
-                    <p class="font-medium text-[10px] md:text-sm">
-                      {{ kerja.company_name }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <a :href="kerja.link" target="_blank" class="flex items-center">
-                <div
-                  class="
-                    flex
-                    text-[10px]
-                    md:text-[12px] md:my-2
-                    py-2
-                    px-4
-                    bg-secondary
-                    rounded-md
-                    justify-center
-                    font-bold
-                    items-center
-                    w-full
-                    duration-500
-                    hover:transition hover:ease-in-out hover:shadow-md
-                  "
-                >
-                  <button>Details</button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-4 h-4"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                    />
-                  </svg>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <notifications
-          group="succ"
-          position="top center"
-          class="mt-5 font-sen text-2xl w-full"
-        />
-        <notifications
-          group="succ"
-          position="top center"
-          class="mt-5 font-sen text-2xl w-full"
-        />
-        <!-- <div class="flex justify-center">
-          <button
-            class="
-              py-2
-              px-6
-              bg-secondary
-              rounded-full
-              text-white
-              font-bold
-              disabled:bg-slate-400
-            "
-            @click="fetchMoreLoker()"
-          >
-            More
-          </button>
-        </div> -->
       </div>
     </div>
   </div>
@@ -434,25 +410,25 @@ export default {
         { id: 2, type: 'Contract', value: 'ct' },
       ],
       categories: [
-        { id: 1, category: 'IT & Software', value: 'IT & Software' },
+        { id: 1, title: 'IT & Software', value: 'IT & Software' },
         {
           id: 2,
-          category: 'Sales & Marketing',
+          title: 'Sales & Marketing',
           value: 'Sales & Marketing',
         },
         {
           id: 3,
-          category: 'Administrasi & Koordinasi',
+          title: 'Administrasi & Koordinasi',
           value: 'Administrasi & Koordinasi',
         },
         {
           id: 4,
-          category: 'Akutansi & Keuangan',
+          title: 'Akutansi & Keuangan',
           value: 'Akutansi & Keuangan',
         },
         {
           id: 5,
-          category: 'Manajemen & Konsultasi',
+          title: 'Manajemen & Konsultasi',
           value: 'Manajemen & Konsultasi',
         },
       ],
@@ -465,16 +441,17 @@ export default {
         return this.$store.state.loker
       } else {
         return this.$store.state.loker.filter((job) => {
-          return (
-            job.job_name.toLowerCase().includes(this.search) ||
-            job.type_name.toLowerCase().includes(this.search) ||
-            job.category_name.toLowerCase().includes(this.search) ||
-            job.company_name.toLowerCase().includes(this.search)
-          )
+          return job.job_name.toLowerCase().includes(this.search)
         })
       }
-
-      // if (this.$store.state.loker === '') {return 'datatidakada'}
+    },
+    filterCategory() {
+      if (this.selectedCategory) {
+        return this.$store.state.loker.filter((ctg) => {
+          return ctg.category_name === this.selectedCategory
+        })
+      }
+      return this.$store.state.loker
     },
     items() {
       return this.$store.state.items
@@ -485,47 +462,66 @@ export default {
   },
   methods: {
     fetchLoker() {
-      this.$store.dispatch('fetchLoker')
+      if (!this.selectedType && !this.selectedCategory) {
+        this.$store.dispatch('fetchLoker')
+      } else {
+        console.log(
+          'type',
+          this.selectedType,
+          'category',
+          this.selectedCategory
+        )
+        return this.$store.state.loker.filter((job) => {
+          return job.category_name === this.selectedCategory
+        })
+      }
+    },
+    filterSearch(selectedCategory, selectedType) {
+      if (!selectedType && !selectedCategory) {
+        return this.$store.state.loker
+      } else {
+        console.log('type', selectedType, 'category', selectedCategory)
+        return this.$store.state.loker.filter((job) => {
+          return (
+            job.type_name
+              .toLowerCase()
+              .includes(selectedType && selectedCategory) &&
+            job.category_name
+              .toLowerCase()
+              .includes(selectedType && selectedCategory)
+          )
+        })
+      }
     },
     addToWishlist(data) {
       const found = this.$store.state.items.find((item) => item === data)
       if (found) {
         found.items = !found.items
-        this.$notify({
-          group: 'succ',
-          type: 'error',
-          title: 'Add to Wish List',
-          text: 'lowongan kerja telah ditambahkan ke wish list',
+        this.$swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Lowongan kerja telah ditambahkan ke wish list',
         })
       } else {
-        this.$store.dispatch('addToWishlist', data)
-        this.$notify({
-          group: 'succ',
-          type: 'success',
-          title: 'Add to Wish List',
-          text: 'lowongan kerja berhasil ditambahkan ke wish list',
-        })
-        // alert('lowongan kerja berhasil ditambahkan ke wish list', data)
-      }
-      // const date = new Date().toLocaleString
-    },
-    // fetchMoreLoker() {
-    //   this.$store.dispatch('fetchMoreLoker')
-    // },
-    filterLoker() {
-      if (!this.selectedType && this.selectedCategory) {
-        return this.$store.state.loker
-      } else {
-        return this.$store.state.loker.filter((job) => {
-          return (
-            job.type_name
-              .toLowerCase()
-              .includes(this.selectedType && this.selectedCategory) &&
-            job.category_name
-              .toLowerCase()
-              .includes(this.selectedType && this.selectedCategory)
-          )
-        })
+        this.$swal
+          .fire({
+            title: 'Apakah kamu ingin menyimpan lowongan kerja ini?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonColor: '#062647',
+            denyButtonColor: '#ff7f32',
+            confirmButtonText: 'Simpan',
+            denyButtonText: `Batal`,
+          })
+          .then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              this.$swal.fire('Telah berhasil disimpan!', '', 'success')
+              this.$store.dispatch('addToWishlist', data)
+            } else if (result.isDenied) {
+              this.$swal.fire('Perubahan tidak disimpan', '', 'info')
+            }
+          })
       }
     },
   },
