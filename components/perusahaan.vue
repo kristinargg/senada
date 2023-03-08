@@ -7,15 +7,7 @@
       <form class="w-full py-5">
         <div class="relative w-full">
           <div
-            class="
-              absolute
-              inset-y-0
-              left-0
-              flex
-              items-center
-              pl-3
-              pointer-events-none
-            "
+            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
           >
             <svg
               aria-hidden="true"
@@ -35,49 +27,32 @@
           </div>
           <input
             id="default-search"
-            v-model="search"
+            v-model="query"
             type="search"
-            class="
-              block
-              w-full
-              p-2
-              pl-10
-              text-sm
-              border
-              bg-info
-              outline-none
-              rounded-full
-              focus:ring-primary focus:border-primary
-            "
+            class="block w-full p-2 pl-10 text-sm border bg-info outline-none rounded-full focus:ring-primary focus:border-primary"
             placeholder="Search..."
             required
-            @keyup="fetchPerusahaan"
+            @input="searchPerusahaan(query)"
           />
         </div>
       </form>
     </div>
 
-    <div
-      class="
-        bg-primary
-        px-4
-        md:px-10
-        py-6
-        rounded-lg
-        flex flex-shrink-0 flex-col
-        gap-4
-        my-10
-      "
-    >
+    <div class="bg-primary px-4 md:px-10 py-6 rounded-lg gap-4 my-10">
       <div
-        v-if="perusahaan.length === 0"
+        v-if="paginatedPerusahaan.length === 0"
         class="flex items-center justify-center"
       >
-        <p class="text-center text-xl text-white">
-          Data perusahaan pemberi kerja belum tersedia
+        <p class="text-center text-sm md:text-xl text-white">
+          Data <span class="text-red-600"> {{ query }} </span> perusahaan
+          pemberi kerja belum tersedia
         </p>
       </div>
-      <div v-for="company in perusahaan" v-else :key="company.id">
+      <div
+        v-for="company in paginatedPerusahaan"
+        :key="company.id"
+        class="py-2"
+      >
         <div class="bg-white rounded-md p-4">
           <div class="flex justify-center">
             <img
@@ -88,16 +63,9 @@
             <img
               v-else
               src="@/assets/img/no-image.png"
-              class="
-                rounded-full
-                w-24
-                md:w-32 md:h-32
-                object-cover
-                bg-slate-200
-              "
+              class="rounded-full w-24 md:w-32 md:h-32 object-cover bg-slate-200"
             />
           </div>
-          <!-- <div class="bg-slate-200 p-10 rounded-full"></div> -->
           <div>
             <p class="text-md md:text-lg font-bold text-center py-2">
               {{ company.company_name }}
@@ -106,17 +74,7 @@
           <div class="text-[12px] md:text-sm font-medium">
             <div class="flex justify-end">
               <div
-                class="
-                  flex
-                  items-center
-                  w-full
-                  justify-center
-                  py-1
-                  px-4
-                  rounded-full
-                  my-2
-                  border
-                "
+                class="flex items-center w-full justify-center py-1 px-4 rounded-full my-2 border"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -140,20 +98,7 @@
               </div>
             </div>
             <div
-              class="
-                flex
-                items-center
-                p-2
-                bg-secondary
-                text-white
-                hover:bg-primary hover:opacity-80 hover:cursor-pointer
-                border
-                justify-around
-                my-2
-                md:my-4
-                text-justify
-                rounded
-              "
+              class="flex items-center p-2 bg-secondary text-white hover:bg-primary hover:opacity-80 hover:cursor-pointer border justify-around my-2 md:my-4 text-justify rounded"
             >
               <p v-if="company.address === null">
                 Alamat belum tersedia untuk saat ini
@@ -165,13 +110,145 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-center" @click="fetchMore">
-        <!-- <Pagination /> -->
-        <button
-          class="py-2 px-6 bg-secondary rounded-full text-white font-bold"
-        >
-          More
-        </button>
+      <div
+        v-if="paginatedPerusahaan.length !== 0"
+        class="flex justify-between px-1 items-center text-sm lg:text-base"
+      >
+        <div>
+          <button
+            class="py-1 px-3 bg-secondary text-white rounded-full"
+            :disabled="currentPage === 1"
+            @click="startPage"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="flex justify-between space-x-1">
+          <div>
+            <div v-if="currentPage !== 1">
+              <button
+                class="py-1 px-6 bg-secondary rounded-full text-white"
+                @click="prevPage"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div v-else>
+              <button
+                class="py-1 px-6 bg-slate-400 rounded-full text-white"
+                disabled
+                @click="prevPage"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div>
+            <div v-if="currentPage !== totalPages">
+              <button
+                class="py-1 px-6 bg-secondary rounded-full text-white"
+                @click="nextPage"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div v-else>
+              <button
+                class="py-1 px-6 bg-slate-400 rounded-full text-white"
+                disabled
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            class="py-1 px-3 bg-secondary text-white rounded-full"
+            :disabled="currentPage === totalPages"
+            @click="lastPage"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -182,18 +259,29 @@ export default {
   name: 'PerusahaanComp',
   data() {
     return {
-      search: '',
+      currentPage: 1,
+      perPage: 5,
+      query: '',
+      searchMode: false,
+      searchResult: [],
     }
   },
   computed: {
-    perusahaan() {
-      if (this.search) {
-        return this.$store.state.perusahaan.filter((company) => {
-          return company.company_name.toLowerCase().includes(this.search)
-        })
-      } else {
-        return this.$store.state.perusahaan
-      }
+    getPerusahaan() {
+      return this.$store.state.perusahaan
+    },
+    getSearchResult() {
+      return this.searchResult
+    },
+    totalPages() {
+      const data = this.searchMode ? this.getSearchResult : this.getPerusahaan
+      return Math.ceil(data.length / this.perPage)
+    },
+    paginatedPerusahaan() {
+      const data = this.searchMode ? this.getSearchResult : this.getPerusahaan
+      const startIndex = (this.currentPage - 1) * this.perPage
+      const endIndex = startIndex + this.perPage
+      return data.slice(startIndex, endIndex)
     },
   },
   mounted() {
@@ -203,8 +291,36 @@ export default {
     fetchPerusahaan() {
       this.$store.dispatch('fetchPerusahaan')
     },
-    fetchMore() {
-      this.$store.dispatch('fetchMore')
+    startPage() {
+      this.currentPage = 1
+    },
+    lastPage() {
+      this.currentPage = this.totalPages
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--
+      }
+    },
+    nextPage() {
+      const data = this.searchMode ? this.getSearchResult : this.getPerusahaan
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++
+        return data
+      }
+    },
+    searchPerusahaan(query) {
+      if (!query) {
+        this.searchResult = null
+        this.searchMode = false
+        return
+      }
+      this.searchMode = true
+      const result = this.getPerusahaan.filter((company) => {
+        return company.company_name.toLowerCase().includes(query.toLowerCase())
+      })
+      this.searchResult = result
+      this.currentPage = 1
     },
   },
 }

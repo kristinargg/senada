@@ -9,11 +9,21 @@
           <div>
             <p class="text-md font-bold">Navigasi</p>
             <ul>
-              <li>Beranda</li>
-              <li>Pelatihan</li>
-              <li>Lowongan Kerja</li>
-              <li>Job Fair</li>
-              <li>Perusahaan</li>
+              <li>
+                <nuxt-link to="/"> Beranda </nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/pelatihan"> Pelatihan</nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/lowongan-kerja"> Lowongan Kerja </nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/jobfair">Job Fair</nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/perusahaan">Perusahaan</nuxt-link>
+              </li>
             </ul>
           </div>
           <div>

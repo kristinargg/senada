@@ -1,12 +1,7 @@
 <template>
   <div id="home" class="font-poppins py-20">
     <div
-      class="
-        px-4
-        pb-10
-        md:py-0 md:flex md:flex-shrink-0 md:px-[70px]
-        lg:px-[150px]
-      "
+      class="px-4 pb-10 md:py-0 md:flex md:flex-shrink-0 md:px-[70px] lg:px-[150px]"
     ></div>
     <div class="px-4">
       <div id="indicators-carousel" class="relative" data-carousel="slide">
@@ -15,17 +10,7 @@
           <!-- Item 1 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="
-                md:grid md:grid-cols-2
-                gap-0
-                lg:mx-[150px]
-                bg-gradient-to-b
-                from-blue-200
-                px-6
-                py-16
-                lg:py-10
-                rounded-2xl
-              "
+              class="md:grid md:grid-cols-2 gap-0 lg:mx-[150px] bg-gradient-to-b from-blue-200 px-6 py-16 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
@@ -37,12 +22,7 @@
               <div class="md:flex md:items-center">
                 <div>
                   <p
-                    class="
-                      text-base
-                      md:text-md
-                      lg:text-xl
-                      first-letter:text-3xl first-letter:font-bold
-                    "
+                    class="text-base md:text-md lg:text-xl first-letter:text-3xl first-letter:font-bold"
                   >
                     Terwujudnya Tenaga Kerja yang Produktif, Kompetitif, dan
                     Sejahtera
@@ -55,17 +35,7 @@
           <!-- Item 2 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="
-                md:grid md:grid-cols-2
-                gap-10
-                lg:mx-[150px]
-                bg-gradient-to-b
-                from-orange-300
-                px-6
-                py-3
-                lg:py-10
-                rounded-2xl
-              "
+              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
@@ -77,12 +47,7 @@
               <div class="md:flex md:items-center">
                 <div>
                   <p
-                    class="
-                      text-base
-                      md:text-md
-                      lg:text-xl
-                      first-letter:text-3xl first-letter:font-bold
-                    "
+                    class="text-base md:text-md lg:text-xl first-letter:text-3xl first-letter:font-bold"
                   >
                     Everyone has the same potential for success
                   </p>
@@ -94,17 +59,7 @@
           <!-- Item 3 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="
-                md:grid md:grid-cols-2
-                gap-10
-                lg:mx-[150px]
-                bg-gradient-to-b
-                from-orange-300
-                px-6
-                py-3
-                lg:py-10
-                rounded-2xl
-              "
+              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
@@ -116,12 +71,7 @@
               <div class="md:flex md:items-center">
                 <div>
                   <p
-                    class="
-                      text-base
-                      md:text-md
-                      lg:text-xl
-                      first-letter:text-3xl first-letter:font-bold
-                    "
+                    class="text-base md:text-md lg:text-xl first-letter:text-3xl first-letter:font-bold"
                   >
                     The only way to achieve the impossible is to believe it is
                     possible
@@ -134,17 +84,7 @@
           <!-- Item 4 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="
-                md:grid md:grid-cols-2
-                gap-10
-                lg:mx-[150px]
-                bg-gradient-to-b
-                from-blue-200
-                px-6
-                py-16
-                lg:py-10
-                rounded-2xl
-              "
+              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-blue-200 px-6 py-16 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
@@ -156,12 +96,7 @@
               <div class="md:flex md:items-center">
                 <div>
                   <p
-                    class="
-                      text-base
-                      md:text-md
-                      lg:text-xl
-                      first-letter:text-3xl first-letter:font-bold
-                    "
+                    class="text-base md:text-md lg:text-xl first-letter:text-3xl first-letter:font-bold"
                   >
                     Leaders can let you fail and yet not let you be a failure
                   </p>
@@ -173,17 +108,7 @@
           <!-- Item 5 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="
-                md:grid md:grid-cols-2
-                gap-10
-                lg:mx-[150px]
-                bg-gradient-to-b
-                from-orange-300
-                px-6
-                py-3
-                lg:py-10
-                rounded-2xl
-              "
+              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
@@ -195,12 +120,7 @@
               <div class="md:flex md:items-center">
                 <div>
                   <p
-                    class="
-                      text-base
-                      md:text-md
-                      lg:text-xl
-                      first-letter:text-3xl first-letter:font-bold
-                    "
+                    class="text-base md:text-md lg:text-xl first-letter:text-3xl first-letter:font-bold"
                   >
                     It always seems impossible until it's done
                   </p>
@@ -212,17 +132,7 @@
           <!-- Item 6 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="
-                md:grid md:grid-cols-2
-                gap-10
-                lg:mx-[150px]
-                bg-gradient-to-b
-                from-blue-300
-                px-6
-                py-3
-                lg:py-10
-                rounded-2xl
-              "
+              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-blue-300 px-6 py-3 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
@@ -234,12 +144,7 @@
               <div class="md:flex md:items-center">
                 <div>
                   <p
-                    class="
-                      text-base
-                      md:text-md
-                      lg:text-xl
-                      first-letter:text-3xl first-letter:font-bold
-                    "
+                    class="text-base md:text-md lg:text-xl first-letter:text-3xl first-letter:font-bold"
                   >
                     If you can't handle stress, you can't handle success.
                   </p>
@@ -251,39 +156,11 @@
         </div>
         <button
           type="button"
-          class="
-            absolute
-            top-0
-            left-0
-            z-30
-            flex
-            items-center
-            justify-center
-            h-full
-            px-4
-            cursor-pointer
-            group
-            focus:outline-none
-          "
+          class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
           data-carousel-prev
         >
           <span
-            class="
-              inline-flex
-              items-center
-              justify-center
-              w-8
-              h-8
-              rounded-full
-              sm:w-10 sm:h-10
-              bg-white/30
-              dark:bg-gray-800/30
-              group-hover:bg-white/50
-              dark:group-hover:bg-gray-800/60
-              group-focus:ring-4 group-focus:ring-white
-              dark:group-focus:ring-gray-800/70
-              group-focus:outline-none
-            "
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
           >
             <svg
               aria-hidden="true"
@@ -305,39 +182,11 @@
         </button>
         <button
           type="button"
-          class="
-            absolute
-            top-0
-            right-0
-            z-30
-            flex
-            items-center
-            justify-center
-            h-full
-            px-4
-            cursor-pointer
-            group
-            focus:outline-none
-          "
+          class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
           data-carousel-next
         >
           <span
-            class="
-              inline-flex
-              items-center
-              justify-center
-              w-8
-              h-8
-              rounded-full
-              sm:w-10 sm:h-10
-              bg-white/30
-              dark:bg-gray-800/30
-              group-hover:bg-white/50
-              dark:group-hover:bg-gray-800/60
-              group-focus:ring-4 group-focus:ring-white
-              dark:group-focus:ring-gray-800/70
-              group-focus:outline-none
-            "
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
           >
             <svg
               aria-hidden="true"
@@ -366,18 +215,7 @@
           <div class="flex justify-end py-10">
             <nuxt-link to="/lowongan-kerja">
               <button
-                class="
-                  py-2
-                  px-4
-                  border border-black
-                  rounded-full
-                  hover:bg-secondary
-                  hover:text-white
-                  hover:transition-all
-                  hover:ease-in-out
-                  duration-500
-                  hover:shadow-md hover:border-none
-                "
+                class="py-2 px-4 border border-black rounded-full hover:bg-secondary hover:text-white hover:transition-all hover:ease-in-out duration-500 hover:shadow-md hover:border-none"
               >
                 See all
               </button>
@@ -387,17 +225,7 @@
         <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
           <div
             v-if="loker.length === 0"
-            class="
-              flex
-              items-center
-              justify-center
-              text-sm
-              md:text-xl
-              py-3
-              px-10
-              bg-white
-              rounded
-            "
+            class="flex items-center justify-center text-sm md:text-xl py-3 px-10 bg-white rounded"
           >
             <p class="text-center">Informasi lowongan kerja sedang tidak ada</p>
           </div>
@@ -405,15 +233,7 @@
           <div v-for="kerja in loker" v-else :key="kerja.link" class="py-2">
             <div class="bg-white rounded-md py-2 px-2 md:p-4">
               <div
-                class="
-                  flex
-                  justify-between
-                  text-center
-                  bg-slate-200
-                  px-2
-                  py-1
-                  rounded
-                "
+                class="flex justify-between text-center bg-slate-200 px-2 py-1 rounded"
               >
                 <div class="flex space-x-1 text-[10px] md:text-sm">
                   <p>{{ kerja.type_name }} |</p>
@@ -472,21 +292,7 @@
                 </div>
                 <a :href="kerja.link" target="_blank" class="flex items-center">
                   <div
-                    class="
-                      flex
-                      text-[10px]
-                      md:text-[12px] md:my-2
-                      py-2
-                      px-4
-                      bg-secondary
-                      rounded-md
-                      justify-center
-                      font-bold
-                      items-center
-                      w-full
-                      duration-500
-                      hover:transition hover:ease-in-out hover:shadow-md
-                    "
+                    class="flex text-[10px] md:text-[12px] md:my-2 py-2 px-4 bg-secondary rounded-md justify-center font-bold items-center w-full duration-500 hover:transition hover:ease-in-out hover:shadow-md"
                   >
                     <button>Details</button>
                     <svg
@@ -513,13 +319,7 @@
     </div>
     <div class="px-4 md:px-[70px] lg:px-[150px] mt-20">
       <div
-        class="
-          bg-gradient-to-r
-          from-info1
-          p-3
-          rounded
-          md:flex md:justify-between md:items-center
-        "
+        class="bg-gradient-to-r from-info1 p-3 rounded md:flex md:justify-between md:items-center"
       >
         <div>
           <img
@@ -539,15 +339,7 @@
       <div class="mt-20">
         <p class="text-center text-lg font-bold">Tools yang digunakan</p>
         <div
-          class="
-            px-4
-            md:px-0
-            py-6
-            flex flex-wrap
-            items-center
-            justify-center
-            space-x-14
-          "
+          class="px-4 md:px-0 py-6 flex flex-wrap items-center justify-center space-x-14"
         >
           <img
             src="@/assets/img/logos_visual-studio-code.png"
@@ -594,10 +386,6 @@ export default {
     fetchHomeLoker() {
       this.$store.dispatch('fetchHomeLoker')
     },
-    // addToWishlist() {
-    //   this.wishlist.push(this.wish)
-    //   console.log(this.wishlist)
-    // },
   },
 }
 </script>
