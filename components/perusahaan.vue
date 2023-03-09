@@ -112,7 +112,7 @@
       </div>
       <div
         v-if="paginatedPerusahaan.length !== 0"
-        class="flex items-center overflow-auto my-3"
+        class="flex justify-center items-center overflow-auto my-3"
       >
         <div v-for="i in totalPages" :key="i" class="flex items-center px-1">
           <button
