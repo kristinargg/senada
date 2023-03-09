@@ -25,10 +25,6 @@ export default {
         rel: 'stylesheet',
         href: 'https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css',
       },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',
-      },
     ],
     script: [
       {
@@ -42,11 +38,11 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // { src: '~/plugins/persistedState.client.js' },
+    { src: '~/plugins/persistedState.client.js' },
     { src: '~/plugins/axioshead.js' },
-    { src: '~/plugins/jw-pagination.js' },
     { src: '~/plugins/alertmodal.js', ssr: false },
   ],
+  // serverMiddleware: ['~/server/middleware/cors.js'],
 
   // { src: '~/plugins/persistedState.client.js' } { src: '~/plugins/notif.js' },
 
@@ -67,6 +63,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/proxy',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -76,6 +73,7 @@ export default {
     // proxy: 'https://data.kemnaker.go.id/api/v1/services/',
     proxyHeaders: false,
     credentials: true,
+    proxy: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

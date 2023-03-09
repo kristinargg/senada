@@ -1,5 +1,14 @@
-export const headers = {
-  Authorization: `Bearer c9f531964260906544cd14c31accadcb2b66ec5dc68da9c576674f3990d6acad`,
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-}
+import Vue from 'vue'
+import AxiosPlugin from 'vue-axios-cors'
+
+Vue.use(AxiosPlugin)
+
+// export default function ({ $axios }) {
+//   $axios.onRequest((config) => {
+//     config.headers.common['Access-Control-Allow-Origin'] = '*'
+//     config.headers.common['Access-Control-Allow-Methods'] =
+//       'GET, POST, PUT, DELETE, OPTIONS'
+//     config.headers.common['Access-Control-Allow-Headers'] =
+//       'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+//   })
+// }

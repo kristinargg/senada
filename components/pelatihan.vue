@@ -83,6 +83,22 @@
         </div>
       </div>
     </div>
+    <div class="flex justify-center mb-1 lg:hidden">
+      <div
+        v-for="i in totalPages"
+        :key="i"
+        class="flex justify-center lg:hidden items-center overflow-x-scroll"
+      >
+        <button
+          type="button"
+          class="bg-primary text-white rounded-full py-1 px-3 hover:opacity-75 active:bg-secondary active:border-secondary focus:border-secondary"
+          :class="{ active: currentPage === i }"
+          @click="changePage(i)"
+        >
+          {{ i }}
+        </button>
+      </div>
+    </div>
     <div
       v-if="paginatedPelatihans.length !== 0"
       class="flex justify-between px-1 items-center text-sm lg:text-base"
@@ -152,6 +168,30 @@
                   d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center overflow-hidden">
+          <div
+            v-for="i in totalPages"
+            :key="i"
+            class="hidden lg:flex items-center"
+          >
+            <button
+              v-if="currentPage === i"
+              class="text-white rounded-full py-1 px-3 hover:opacity-75 bg-secondary active:border-secondary focus:border-secondary mx-1"
+              :class="{ active: currentPage === i }"
+              @click="changePage(i)"
+            >
+              {{ i }}
+            </button>
+            <button
+              v-else
+              class="bg-primary text-white rounded-full py-1 px-3 hover:opacity-75 active:bg-secondary active:border-secondary focus:border-secondary"
+              :class="{ active: currentPage === i }"
+              @click="changePage(i)"
+            >
+              {{ i }}
             </button>
           </div>
         </div>
@@ -280,6 +320,9 @@ export default {
         this.currentPage++
         return data
       }
+    },
+    changePage(page) {
+      this.currentPage = page
     },
     searchPelatihan(query) {
       if (!query) {

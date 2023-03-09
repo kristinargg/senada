@@ -98,6 +98,33 @@
     </div>
     <div
       v-if="paginatedJobfair.length !== 0"
+      class="flex justify-center items-center overflow-auto my-3"
+    >
+      <div
+        v-for="i in totalPages"
+        :key="i"
+        class="flex items-center px-1 lg:hidden"
+      >
+        <button
+          v-if="currentPage === i"
+          class="bg-secondary outline outline-1 outline-slate-200 text-white rounded-full py-1 px-3 hover:opacity-75 active:border-secondary focus:border-secondary my-3"
+          :class="{ active: currentPage === i }"
+          @click="changePage(i)"
+        >
+          {{ i }}
+        </button>
+        <button
+          v-else
+          class="bg-primary text-white py-1 px-3 hover:opacity-75"
+          :class="{ active: currentPage === i }"
+          @click="changePage(i)"
+        >
+          {{ i }}
+        </button>
+      </div>
+    </div>
+    <div
+      v-if="paginatedJobfair.length !== 0"
       class="flex justify-between px-1 items-center text-sm lg:text-base pt-3"
     >
       <div>
@@ -165,6 +192,33 @@
                   d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex justify-center items-center overflow-x-auto mx-1"
+          width="10"
+        >
+          <div
+            v-for="i in totalPages"
+            :key="i"
+            class="hidden lg:flex items-center mx-1"
+          >
+            <button
+              v-if="currentPage === i"
+              class="bg-secondary outline outline-1 outline-slate-200 text-white rounded-full py-1 px-3 hover:opacity-75 active:border-secondary focus:border-secondary"
+              :class="{ active: currentPage === i }"
+              @click="changePage(i)"
+            >
+              {{ i }}
+            </button>
+            <button
+              v-else
+              class="bg-primary text-white py-1 px-3 hover:opacity-75"
+              :class="{ active: currentPage === i }"
+              @click="changePage(i)"
+            >
+              {{ i }}
             </button>
           </div>
         </div>

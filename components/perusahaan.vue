@@ -112,6 +112,29 @@
       </div>
       <div
         v-if="paginatedPerusahaan.length !== 0"
+        class="flex items-center overflow-auto my-3"
+      >
+        <div v-for="i in totalPages" :key="i" class="flex items-center px-1">
+          <button
+            v-if="currentPage === i"
+            class="outline outline-1 outline-slate-200 text-white rounded-full py-1 px-3 hover:opacity-75 active:border-secondary focus:border-secondary my-3"
+            :class="{ active: currentPage === i }"
+            @click="changePage(i)"
+          >
+            {{ i }}
+          </button>
+          <button
+            v-else
+            class="bg-primary text-white py-1 px-3 hover:opacity-75"
+            :class="{ active: currentPage === i }"
+            @click="changePage(i)"
+          >
+            {{ i }}
+          </button>
+        </div>
+      </div>
+      <div
+        v-if="paginatedPerusahaan.length !== 0"
         class="flex justify-between px-1 items-center text-sm lg:text-base"
       >
         <div>
@@ -308,6 +331,9 @@ export default {
         this.currentPage++
         return data
       }
+    },
+    changePage(page) {
+      this.currentPage = page
     },
     searchPerusahaan(query) {
       if (!query) {
