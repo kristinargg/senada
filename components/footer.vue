@@ -27,8 +27,8 @@
             </ul>
           </div>
           <div>
-            <p class="text-md font-bold">Kontak</p>
-            <span class="font-medium text-base">(021)0984134894</span>
+            <p class="text-md font-bold">Alamat</p>
+            <!-- <span class="font-medium text-base">(021)0984134894</span> -->
             <p class="font-medium text-base">
               Jl. Gatot Subroto No.51, RT.5/4, Kuningan Tim., Kecamatan
               Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta

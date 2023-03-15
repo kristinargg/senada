@@ -10,7 +10,7 @@
           <!-- Item 1 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="md:grid md:grid-cols-2 gap-0 lg:mx-[150px] bg-gradient-to-b from-blue-200 px-6 py-16 lg:py-10 rounded-2xl"
+              class="sm:grid sm:grid-cols-2 items-center gap-0 lg:mx-[150px] bg-gradient-to-b from-blue-200 px-6 py-16 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
@@ -35,13 +35,13 @@
           <!-- Item 2 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
+              class="sm:grid sm:grid-cols-2 items-center gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
                   src="@/assets/img/slides/5.png"
                   alt="header-img"
-                  class="md:w-3/4"
+                  class="sm:w-3/4"
                 />
               </div>
               <div class="md:flex md:items-center">
@@ -59,13 +59,13 @@
           <!-- Item 3 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
+              class="sm:grid sm:grid-cols-2 items-center gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
                   src="@/assets/img/slides/8.png"
                   alt="header-img"
-                  class="md:w-3/4"
+                  class="sm:w-3/4"
                 />
               </div>
               <div class="md:flex md:items-center">
@@ -84,7 +84,7 @@
           <!-- Item 4 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-blue-200 px-6 py-16 lg:py-10 rounded-2xl"
+              class="sm:grid sm:grid-cols-2 items-center gap-10 lg:mx-[150px] bg-gradient-to-b from-blue-200 px-6 py-16 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
@@ -108,13 +108,13 @@
           <!-- Item 5 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
+              class="sm:grid sm:grid-cols-2 items-center gap-10 lg:mx-[150px] bg-gradient-to-b from-orange-300 px-6 py-3 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
                   src="@/assets/img/slides/7.png"
                   alt="header-img"
-                  class="md:w-3/4"
+                  class="sm:w-3/4"
                 />
               </div>
               <div class="md:flex md:items-center">
@@ -132,13 +132,13 @@
           <!-- Item 6 -->
           <div class="hidden duration-1000 ease-in-out" data-carousel-item>
             <div
-              class="md:grid md:grid-cols-2 gap-10 lg:mx-[150px] bg-gradient-to-b from-blue-300 px-6 py-3 lg:py-10 rounded-2xl"
+              class="sm:grid sm:grid-cols-2 items-center gap-10 lg:mx-[150px] bg-gradient-to-b from-blue-300 px-6 py-3 lg:py-10 rounded-2xl"
             >
               <div>
                 <img
                   src="@/assets/img/slides/4.png"
                   alt="header-img"
-                  class="md:w-3/4"
+                  class="sm:w-3/4"
                 />
               </div>
               <div class="md:flex md:items-center">

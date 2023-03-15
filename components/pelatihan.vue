@@ -50,7 +50,12 @@
         tersedia
       </p>
     </div>
-    <div v-for="lth in paginatedPelatihans" :key="lth.id" class="py-10 px-4">
+    <div
+      v-for="lth in paginatedPelatihans"
+      v-else
+      :key="lth.id"
+      class="py-10 px-4"
+    >
       <div class="border rounded">
         <div class="border relative">
           <img :src="lth.cover" alt="cover" class="w-full h-72 object-cover" />
@@ -87,11 +92,19 @@
       <div
         v-for="i in totalPages"
         :key="i"
-        class="flex justify-center lg:hidden items-center overflow-x-scroll"
+        class="flex lg:hidden items-center px-1"
       >
         <button
-          type="button"
-          class="bg-primary text-white rounded-full py-1 px-3 hover:opacity-75 active:bg-secondary active:border-secondary focus:border-secondary"
+          v-if="currentPage === i"
+          class="bg-secondary outline outline-1 outline-slate-200 text-white rounded-full py-1 px-3 hover:opacity-75 active:border-secondary focus:border-secondary my-3"
+          :class="{ active: currentPage === i }"
+          @click="changePage(i)"
+        >
+          {{ i }}
+        </button>
+        <button
+          v-else
+          class="bg-primary rounded-full text-white py-1 px-3 hover:opacity-75"
           :class="{ active: currentPage === i }"
           @click="changePage(i)"
         >
@@ -171,15 +184,15 @@
             </button>
           </div>
         </div>
-        <div class="flex items-center overflow-hidden">
+        <div class="flex justify-center items-center overflow-auto mx-1">
           <div
             v-for="i in totalPages"
             :key="i"
-            class="hidden lg:flex items-center"
+            class="hidden lg:flex items-center mx-1"
           >
             <button
               v-if="currentPage === i"
-              class="text-white rounded-full py-1 px-3 hover:opacity-75 bg-secondary active:border-secondary focus:border-secondary mx-1"
+              class="bg-secondary outline outline-1 outline-slate-200 text-white rounded-full py-1 px-3 hover:opacity-75 active:border-secondary focus:border-secondary"
               :class="{ active: currentPage === i }"
               @click="changePage(i)"
             >
@@ -187,7 +200,7 @@
             </button>
             <button
               v-else
-              class="bg-primary text-white rounded-full py-1 px-3 hover:opacity-75 active:bg-secondary active:border-secondary focus:border-secondary"
+              class="bg-primary text-white py-1 px-3 rounded-full hover:opacity-75"
               :class="{ active: currentPage === i }"
               @click="changePage(i)"
             >

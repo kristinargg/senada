@@ -143,7 +143,7 @@
         </div>
         <div
           v-if="paginatedLokers.length !== 0"
-          class="flex items-center overflow-auto my-3"
+          class="flex justify-center items-center overflow-auto my-3"
         >
           <div
             v-for="i in totalPages"
@@ -240,7 +240,9 @@
                 </button>
               </div>
             </div>
-            <div class="flex items-center overflow-auto mx-1">
+            <div
+              class="flex justify-center items-center overflow-x-auto overflow-hidden w-0 lg:w-96 mx-1"
+            >
               <div
                 v-for="i in totalPages"
                 :key="i"

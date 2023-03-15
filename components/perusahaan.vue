@@ -112,7 +112,7 @@
       </div>
       <div
         v-if="paginatedPerusahaan.length !== 0"
-        class="flex justify-center items-center overflow-auto my-3"
+        class="flex lg:hidden justify-center items-center overflow-x-scroll my-3"
       >
         <div v-for="i in totalPages" :key="i" class="flex items-center px-1">
           <button
@@ -159,7 +159,7 @@
             </svg>
           </button>
         </div>
-        <div class="flex justify-between space-x-1">
+        <div class="flex justify-between space-x-1 items-center">
           <div>
             <div v-if="currentPage !== 1">
               <button
@@ -205,6 +205,40 @@
               </button>
             </div>
           </div>
+          <div>
+            <div
+              class="hidden lg:block overflow-x-auto overflow-hidden w-24 lg:w-96"
+            >
+              <div
+                v-if="paginatedPerusahaan.length !== 0"
+                class="flex justify-center items-center my-3"
+              >
+                <div
+                  v-for="i in totalPages"
+                  :key="i"
+                  class="flex items-center px-1"
+                >
+                  <button
+                    v-if="currentPage === i"
+                    class="outline outline-1 outline-slate-200 text-white rounded-full py-1 px-3 hover:opacity-75 active:border-secondary focus:border-secondary my-3"
+                    :class="{ active: currentPage === i }"
+                    @click="changePage(i)"
+                  >
+                    {{ i }}
+                  </button>
+                  <button
+                    v-else
+                    class="bg-primary text-white py-1 px-3 hover:opacity-75"
+                    :class="{ active: currentPage === i }"
+                    @click="changePage(i)"
+                  >
+                    {{ i }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div>
             <div v-if="currentPage !== totalPages">
               <button
@@ -351,3 +385,11 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.overflow {
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap; /* untuk menghindari pemotongan kata */
+}
+</style>
