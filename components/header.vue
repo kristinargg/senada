@@ -33,13 +33,11 @@
             </nuxt-link>
           </div>
           <div class="my-1 md:my-0 flex items-center">
-            <a href="https://kemnaker.go.id/">
-              <button
-                class="hidden md:block py-2 ml-5 md:ml-1 lg:ml-5 px-4 md:px-2 lg:px-4 w-full bg-secondary text-white text-sm md:text-sm hover:shadow-xl hover:outline hover:outline-1 hover:outline-white rounded-lg"
-              >
-                Log In
-              </button>
-            </a>
+            <button
+              class="hidden md:block py-2 ml-5 md:ml-1 lg:ml-5 px-4 md:px-2 lg:px-4 w-full bg-secondary text-white text-sm md:text-sm hover:shadow-xl hover:outline hover:outline-1 hover:outline-white rounded-lg"
+            >
+              <a href="https://kemnaker.go.id/"> Log In </a>
+            </button>
           </div>
 
           <button
@@ -48,8 +46,8 @@
             class="inline-flex items-center p-2 text-sm text-gray-500 md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 rounded dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-cta"
             aria-expanded="false"
+            @click="isOpen = !isOpen"
           >
-            <span class="sr-only">Open main menu</span>
             <svg
               class="w-6 h-6"
               aria-hidden="true"
@@ -76,51 +74,51 @@
               class="py-2 px-4 hover:shadow-xl hover:outline hover:outline-1 hover:outline-white hover:rounded-lg"
             >
               <nuxt-link to="/">
-                <p class="block py-2 pl-3 pr-4 md:p-0" aria-current="page">
+                <span class="block py-2 pl-3 pr-4 md:p-0" aria-current="page">
                   Beranda
-                </p>
+                </span>
               </nuxt-link>
             </li>
             <li
               class="py-2 px-4 hover:shadow-xl hover:outline hover:outline-1 hover:outline-white hover:rounded-lg"
             >
-              <nuxt-link to="/pelatihan/">
-                <p class="block py-2 pl-3 pr-4 md:p-0">Pelatihan</p>
+              <nuxt-link to="/pelatihan">
+                <span class="block py-2 pl-3 pr-4 md:p-0">Pelatihan</span>
               </nuxt-link>
             </li>
             <li
               class="py-2 px-4 hover:shadow-xl hover:outline hover:outline-1 hover:outline-white hover:rounded-lg"
             >
-              <nuxt-link to="/lowongan-kerja/">
-                <p class="block py-2 pl-3 pr-4 md:p-0">Lowongan Kerja</p>
+              <nuxt-link to="/lowongan-kerja">
+                <span class="block py-2 pl-3 pr-4 md:p-0">Lowongan Kerja</span>
               </nuxt-link>
             </li>
             <li
               class="py-2 px-4 hover:shadow-xl hover:outline hover:outline-1 hover:outline-white hover:rounded-lg"
             >
-              <nuxt-link to="/jobfair/">
-                <p class="block py-2 pl-3 pr-4 md:p-0">Job Fair</p>
+              <nuxt-link to="/jobfair">
+                <span class="block py-2 pl-3 pr-4 md:p-0">Job Fair</span>
               </nuxt-link>
             </li>
             <li
               class="py-2 px-4 hover:shadow-xl hover:outline hover:outline-1 hover:outline-white hover:rounded-lg"
             >
-              <nuxt-link to="/perusahaan/">
-                <p class="block py-2 pl-3 pr-4 md:p-0">Perusahaan</p>
+              <nuxt-link to="/perusahaan">
+                <span class="block py-2 pl-3 pr-4 md:p-0">Perusahaan</span>
               </nuxt-link>
             </li>
             <li
               class="md:hidden py-2 px-4 hover:shadow-xl hover:outline hover:outline-1 hover:outline-white hover:rounded-lg"
             >
-              <nuxt-link to="/wishlist/">
-                <p class="block py-2 pl-3 pr-4 md:p-0">Wish List</p>
+              <nuxt-link to="/wishlist">
+                <span class="block py-2 pl-3 pr-4 md:p-0">Wish List</span>
               </nuxt-link>
             </li>
             <li
               class="md:hidden hover:shadow-xl hover:outline hover:outline-1 hover:outline-white hover:rounded-lg bg-secondary rounded-md font-bold text-center"
             >
               <a href="https://kemnaker.go.id/">
-                <p class="block py-2 pl-3 pr-4 md:p-0">Log in</p>
+                <span class="block py-2 pl-3 pr-4 md:p-0">Log in</span>
               </a>
             </li>
           </ul>

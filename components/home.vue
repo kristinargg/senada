@@ -213,21 +213,19 @@
         <div>
           <h1 class="text-2xl font-bold">Lowongan Kerja</h1>
           <div class="flex justify-end py-10">
-            <nuxt-link to="/lowongan-kerja">
-              <button
-                class="py-2 px-4 border border-black rounded-full hover:bg-secondary hover:text-white hover:transition-all hover:ease-in-out duration-500 hover:shadow-md hover:border-none"
-              >
-                See all
-              </button>
-            </nuxt-link>
+            <span
+              class="py-2 px-4 border border-black rounded-full hover:bg-secondary hover:text-white hover:transition-all hover:ease-in-out duration-500 hover:shadow-md hover:border-none"
+            >
+              <nuxt-link to="/lowongan-kerja"> See all </nuxt-link>
+            </span>
           </div>
         </div>
         <div class="bg-primary rounded-2xl py-6 px-4 md:px-[70px]">
           <div
             v-if="loker.length === 0"
-            class="flex items-center justify-center text-sm md:text-xl py-3 px-10 bg-white rounded"
+            class="flex items-center justify-center text-sm md:text-xl py-3 px-10 bg-white rounded text-center"
           >
-            <p class="text-center">Informasi lowongan kerja sedang tidak ada</p>
+            Informasi lowongan kerja sedang tidak ada
           </div>
 
           <div v-for="kerja in loker" v-else :key="kerja.link" class="py-2">

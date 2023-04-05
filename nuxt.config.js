@@ -29,6 +29,8 @@ export default {
     script: [
       {
         src: 'https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js',
+        body: true,
+        defer: true,
       },
     ],
   },
@@ -42,9 +44,7 @@ export default {
     { src: '~/plugins/axioshead.js' },
     { src: '~/plugins/alertmodal.js', ssr: false },
   ],
-  // serverMiddleware: ['~/server/middleware/cors.js'],
 
-  // { src: '~/plugins/persistedState.client.js' } { src: '~/plugins/notif.js' },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

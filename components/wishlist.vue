@@ -18,16 +18,7 @@
         v-for="(item, index) in items"
         v-else
         :key="index"
-        class="
-          text-center
-          shadow-xl
-          bg-info1
-          px-4
-          py-6
-          rounded
-          mt-6
-          md:mx-[15rem]
-        "
+        class="text-center shadow-xl bg-info1 px-4 py-6 rounded mt-6 md:mx-[15rem]"
       >
         <div class="float-right cursor-pointer" @click="removeItem(index)">
           <svg
@@ -46,22 +37,12 @@
           </svg>
         </div>
         <div
-          class="
-            grid grid-cols-1
-            lg:flex lg:justify-between lg:items-center
-            text-center
-          "
+          class="grid grid-cols-1 lg:flex lg:justify-between lg:items-center text-center"
         >
           <img :src="item.logo" :alt="item.job_name" class="rounded w-16" />
           <div class="text-left">
             <h4
-              class="
-                text-md
-                lg:text-lg
-                text-left
-                font-bold font-sen
-                hover:underline
-              "
+              class="text-md lg:text-lg text-left font-bold font-sen hover:underline"
             >
               <a :href="item.link" target="_blank" rel="noopener noreferrer">
                 {{ item.job_name }}</a
@@ -105,13 +86,6 @@ export default {
             this.$store.dispatch('remove', data)
           }
         })
-      // this.$notify({
-      //   group: 'foo',
-      //   type: 'success',
-      //   title: 'Delete Wish List',
-      //   text: 'success delete wish list',
-      //   color: '#000000',
-      // })
     },
   },
 }
