@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header :is-open="isOpen" @toggle-is-open="toggleIsOpen" />
     <Home />
     <FooterVue />
   </div>
@@ -18,10 +18,21 @@ export default {
     FooterVue,
     Home,
   },
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
   head() {
     return {
       title: 'Beranda',
     }
+  },
+
+  methods: {
+    toggleIsOpen() {
+      this.isOpen = !this.isOpen // Mengubah nilai isOpen di komponen IndexPage
+    },
   },
 }
 </script>

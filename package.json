@@ -19,6 +19,7 @@
     "animate.css": "^4.1.1",
     "core-js": "^3.19.3",
     "cors": "^2.8.5",
+    "express": "^4.18.2",
     "flowbite": "^1.6.3",
     "jw-vue-pagination": "^1.0.3",
     "nuxt": "^2.15.8",

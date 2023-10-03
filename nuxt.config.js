@@ -34,17 +34,16 @@ export default {
       },
     ],
   },
+  serverMiddleware: ['~/server/proxy.js'],
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/input.css'],
+  css: ['@/assets/css/input.css', '@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/persistedState.client.js' },
-    { src: '~/plugins/axioshead.js' },
     { src: '~/plugins/alertmodal.js', ssr: false },
   ],
-
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

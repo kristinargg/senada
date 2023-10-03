@@ -43,10 +43,10 @@
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
-            class="inline-flex items-center p-2 text-sm text-gray-500 md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 rounded dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            class="inline-flex items-center p-2 text-sm text-gray-500 md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 rounded dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 mobile-dropdown-button"
             aria-controls="navbar-cta"
             aria-expanded="false"
-            @click="isOpen = !isOpen"
+            @click="$emit('toggle-is-open')"
           >
             <svg
               class="w-6 h-6"
@@ -131,9 +131,16 @@
 <script>
 export default {
   name: 'HeaderComp',
-  data() {
-    return {
-      isOpen: false,
+  props: {
+    isOpen: Boolean, // Menambahkan properti isOpen yang diterima dari komponen IndePage
+  },
+
+  mounted() {
+    // Periksa apakah perangkat ini adalah perangkat mobile
+    const isMobile = window.innerWidth <= 640 // Sesuaikan dengan breakpoint Anda
+
+    if (isMobile) {
+      this.$emit.isOpen = true // Buka dropdown di perangkat mobile
     }
   },
 }
